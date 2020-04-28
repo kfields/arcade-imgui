@@ -1,0 +1,8 @@
+arcade==2.4a5
+attrs==19.3.0
+imgui==1.1.0
+numpy==1.18.3
+Pillow==7.1.2
+pyglet==1.5.4
+PyOpenGL==3.1.5
+pytiled-parser==0.9.3
