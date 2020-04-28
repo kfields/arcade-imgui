@@ -1,6 +1,6 @@
 # Arcade ImGui
 
-Demonstration of using ImGui with Python Arcade
+[The Python Arcade Library](https://arcade.academy/) + [pyimgui](https://github.com/swistakm/pyimgui) = :heart:
 
 ## Install
 
