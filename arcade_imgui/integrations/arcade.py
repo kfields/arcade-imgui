@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import absolute_import
 
-from pyglet.window import key, mouse
-
-import imgui.integrations
-
 from imgui.integrations import compute_fb_scale
 from imgui.integrations.opengl import ProgrammablePipelineRenderer
 from imgui.integrations.pyglet import PygletMixin
+
 
 class ArcadeRenderer(PygletMixin, ProgrammablePipelineRenderer):
     def __init__(self, window, attach_callbacks=True):

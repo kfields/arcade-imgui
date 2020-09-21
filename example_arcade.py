@@ -1,10 +1,10 @@
-import pyglet
+import arcade
+
 import imgui
 import imgui.core
 
-from arcadeimgui.integrations.arcade import ArcadeRenderer
+from arcade_imgui.integrations.arcade import ArcadeRenderer
 
-import arcade
 
 class MyGui:
     def __init__(self, window):
@@ -39,8 +39,9 @@ class MyGui:
         imgui.end_frame()
 
         imgui.render()
-        
+
         self.renderer.render(imgui.get_draw_data())
+
 
 class App(arcade.Window):
     def __init__(self):
@@ -50,6 +51,7 @@ class App(arcade.Window):
     def on_draw(self):
         arcade.start_render()
         self.gui.render()
+
 
 app = App()
 arcade.run()
