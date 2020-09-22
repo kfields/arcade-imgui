@@ -2,7 +2,7 @@ import arcade
 import imgui
 import imgui.core
 
-from arcade_imgui.integrations.arcade import ArcadeRenderer
+from arcade_imgui import ArcadeRenderer
 
 
 class MyGui:
