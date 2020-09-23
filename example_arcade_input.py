@@ -1,10 +1,9 @@
-import pyglet
+import arcade
 import imgui
 import imgui.core
 
-from arcadeimgui.integrations.arcade import ArcadeRenderer
+from arcade_imgui import ArcadeRenderer
 
-import arcade
 
 class MyGui:
     def __init__(self, window):
@@ -27,8 +26,9 @@ class MyGui:
         imgui.end_frame()
 
         imgui.render()
-        
+
         self.renderer.render(imgui.get_draw_data())
+
 
 class App(arcade.Window):
     def __init__(self):
@@ -37,10 +37,11 @@ class App(arcade.Window):
 
     def on_draw(self):
         arcade.start_render()
-        #TODO: sets the gui origin to 0,0.  Probably a simple fix
-        #arcade.draw_text(str(self.gui.test_input), 128, 128, arcade.color.WHITE_SMOKE, 64)
+        # TODO: sets the gui origin to 0,0.  Probably a simple fix
+        # arcade.draw_text(str(self.gui.test_input), 128, 128, arcade.color.WHITE_SMOKE, 64)
         self.gui.render()
         arcade.draw_text(str(self.gui.test_input), 128, 128, arcade.color.WHITE_SMOKE, 64)
+
 
 app = App()
 arcade.run()
