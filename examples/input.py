@@ -1,7 +1,8 @@
-import pyglet
+import arcade
 import imgui
 import imgui.core
-from imgui.integrations.pyglet import PygletRenderer
+
+from arcade_imgui import ArcadeRenderer
 
 
 class MyGui:
@@ -9,7 +10,7 @@ class MyGui:
         self.window = window
         # Must create or set the context before instantiating the renderer
         imgui.create_context()
-        self.renderer = PygletRenderer(window)
+        self.renderer = ArcadeRenderer(window)
         # Window variables
         self.test_input = 0
 
@@ -25,23 +26,20 @@ class MyGui:
         imgui.end_frame()
 
         imgui.render()
-        
+
         self.renderer.render(imgui.get_draw_data())
 
-class App(pyglet.window.Window):
+
+class App(arcade.Window):
     def __init__(self):
-        super().__init__(800, 600, "Pyglet Imgui Test")
-        pyglet.clock.schedule_interval(self.update_gui, 1/60)
+        super().__init__(800, 600, "Input Example")
         self.gui = MyGui(self)
 
     def on_draw(self):
-        self.clear()
+        arcade.start_render()
         self.gui.render()
-    
-    def update_gui(self, dt):
-        #self.clear()
-        #self.UI_test.render()
-        pass
+        arcade.draw_text(str(self.gui.test_input), 128, 128, arcade.color.WHITE_SMOKE, 64)
+
 
 app = App()
-pyglet.app.run()
+arcade.run()

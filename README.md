@@ -2,19 +2,29 @@
 
 [The Python Arcade Library](https://arcade.academy/) + [pyimgui](https://github.com/swistakm/pyimgui) = :heart:
 
+## Prerequisite
+
+Install [Poetry](https://python-poetry.org/)
+
+    pip install poetry
+
 ## Install
 
-Clone the repository
+Clone the repository, setup, start shell in venv ...
 
-        pip install git+https://github.com/kfields/arcade-imgui.git
-        
+       git clone https://github.com/kfields/arcade-imgui.git
+       cd arcade-imgui
+       poetry install
+       poetry shell
+       
+
 
 ## Run
 
 Full Demo
 
-        python example_arcade.py
+        python examples/demo.py
 
 Number Input Test
 
-        python example_arcade_input.py
+        python examples/input.py
