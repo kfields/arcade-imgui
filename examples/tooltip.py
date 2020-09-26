@@ -15,6 +15,9 @@ class MyGui:
     def render(self):
         imgui.new_frame()
 
+        imgui.set_next_window_position(16, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
         imgui.begin("Example: tooltip")
         imgui.button("Click me!")
         if imgui.is_item_hovered():
@@ -35,7 +38,7 @@ class MyGui:
 
 class App(arcade.Window):
     def __init__(self):
-        super().__init__(800, 600, "Tooltip Example")
+        super().__init__(800, 600, "Tooltip Example", resizable=True)
         self.gui = MyGui(self)
 
     def on_draw(self):

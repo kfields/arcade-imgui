@@ -16,6 +16,9 @@ class MyGui:
     def render(self):
         imgui.new_frame()
 
+        imgui.set_next_window_position(16, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
         if imgui.begin_main_menu_bar():
             if imgui.begin_menu("File", True):
 
@@ -45,7 +48,7 @@ class MyGui:
 
 class App(arcade.Window):
     def __init__(self):
-        super().__init__(1280, 720, "Arcade Imgui Test")
+        super().__init__(1024, 768, "Arcade Imgui Test", resizable=True)
         self.gui = MyGui(self)
 
     def on_draw(self):

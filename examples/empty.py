@@ -15,6 +15,9 @@ class MyGui:
     def render(self):
         imgui.new_frame()
 
+        imgui.set_next_window_position(16, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
         imgui.begin("Example: empty window")
         imgui.end()
 
@@ -27,7 +30,7 @@ class MyGui:
 
 class App(arcade.Window):
     def __init__(self):
-        super().__init__(800, 600, "Empty Window Example")
+        super().__init__(800, 600, "Empty Window Example", resizable=True)
         self.gui = MyGui(self)
 
     def on_draw(self):

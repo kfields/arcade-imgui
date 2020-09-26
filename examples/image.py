@@ -29,14 +29,17 @@ class MyGui:
         # Must create or set the context before instantiating the renderer
         imgui.create_context()
         self.renderer = ArcadeRenderer(window)
+        image_path = os.path.join('assets', 'robocute.png')
+        self.texture_id, self.width, self.height = load_texture_from_file(image_path)
 
     def render(self):
         imgui.new_frame()
 
+        imgui.set_next_window_position(16, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
         imgui.begin("Image example")
-        image_path = './robocute.png'
-        texture_id, width, height = load_texture_from_file(image_path)
-        imgui.image(texture_id, width, height)
+        imgui.image(self.texture_id, self.width, self.height)
         imgui.end()
 
         imgui.end_frame()
@@ -48,7 +51,7 @@ class MyGui:
 
 class App(arcade.Window):
     def __init__(self):
-        super().__init__(800, 600, "Image Example")
+        super().__init__(800, 600, "Image Example", resizable=True)
         self.gui = MyGui(self)
         #
         file_path = os.path.dirname(os.path.abspath(__file__))
