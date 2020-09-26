@@ -90,9 +90,6 @@ class ArcadeGLRenderer(BaseOpenGLRenderer):
                 # Use low level pyglet call here instead because we only have the texture name
                 gl.glBindTexture(gl.GL_TEXTURE_2D, command.texture_id)
 
-                if imgui.INDEX_SIZE != 4:
-                    raise ValueError()
-
                 # Set scissor box
                 x, y, z, w = command.clip_rect
                 gl.glScissor(int(x), int(fb_height - w), int(z - x), int(w - y))
