@@ -15,6 +15,9 @@ class MyGui:
     def render(self):
         imgui.new_frame()
 
+        imgui.set_next_window_position(16, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
         imgui.begin("Line")
         draw_list = imgui.get_overlay_draw_list()
         draw_list.add_line(20, 35, 180, 80, imgui.get_color_u32_rgba(1,1,0,1), 3)
@@ -36,7 +39,7 @@ class MyGui:
 
 class App(arcade.Window):
     def __init__(self):
-        super().__init__(800, 600, "Line Example")
+        super().__init__(800, 600, "Overlay Example", resizable=True)
         self.gui = MyGui(self)
 
     def on_draw(self):

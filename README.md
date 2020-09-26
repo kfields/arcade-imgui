@@ -21,6 +21,12 @@ Clone the repository, setup, start shell in a virtual environment ...
 
 ## Run
 
-Full Demo
+### All in one Demo
 
-        python examples/demo.py
+        python demo.py
+
+### Individual Examples
+
+        python examples/bullet.py
+        python examples/colors.py
+        etc ...
