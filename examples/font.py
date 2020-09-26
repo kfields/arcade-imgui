@@ -1,9 +1,12 @@
+from pathlib import Path
+
 import arcade
 import imgui
 import imgui.core
 
 from arcade_imgui import ArcadeRenderer
 
+RESOURCE_PATH = Path(__file__).parent.parent / 'assets'
 
 class MyGui:
     def __init__(self, window):
@@ -12,16 +15,19 @@ class MyGui:
         imgui.create_context()
         self.renderer = ArcadeRenderer(window)
 
+        io = imgui.get_io()
+        self.new_font = io.fonts.add_font_from_file_ttf(str(RESOURCE_PATH / "DroidSans.ttf"), 20)
+        self.renderer.refresh_font_texture()
+
     def render(self):
         imgui.new_frame()
 
-        imgui.set_next_window_position(16, 32, imgui.ONCE)
-        imgui.set_next_window_size(512, 512, imgui.ONCE)
+        imgui.begin("Font")
 
-        imgui.begin("Font image example")
-        texture_id = imgui.get_io().fonts.texture_id
-        draw_list = imgui.get_window_draw_list()
-        draw_list.add_image(texture_id, (20, 35), (180, 80), col=imgui.get_color_u32_rgba(0.5,0.5,1,1))
+        imgui.text("Text displayed using default font")
+        with imgui.font(self.new_font):
+            imgui.text("Text displayed using custom font")
+
         imgui.end()
 
         imgui.end_frame()
