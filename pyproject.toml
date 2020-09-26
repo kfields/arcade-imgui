@@ -28,7 +28,6 @@ keywords = ["arcade", "game", "gui"]
 python = "^3.7"
 arcade = "^2.4.2"
 imgui = "^1.2.0"
-PyOpenGL = "^3.0.0"
 
 [tool.poetry.dev-dependencies]
 
