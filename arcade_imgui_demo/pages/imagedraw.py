@@ -1,9 +1,5 @@
 import os
 
-import OpenGL.GL as gl
-import numpy as np
-from PIL import Image
-
 import arcade
 import imgui
 import imgui.core
@@ -11,31 +7,16 @@ import imgui.core
 from arcade_imgui_demo.page import Page
 
 
-def load_texture_from_file(filepath):
-    im = Image.open(filepath).convert("RGB")
-    w, h = im.size
-    imdata = np.frombuffer(im.tobytes(), np.uint8)
-    texname = gl.glGenTextures(1)
-    gl.glBindTexture(gl.GL_TEXTURE_2D, texname)
-
-    gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MIN_FILTER, gl.GL_LINEAR)
-    gl.glTexParameterf(gl.GL_TEXTURE_2D, gl.GL_TEXTURE_MAG_FILTER, gl.GL_LINEAR)
-    gl.glPixelStorei(gl.GL_UNPACK_ALIGNMENT,1)
-    gl.glTexImage2D(gl.GL_TEXTURE_2D, 0, gl.GL_RGB, w, h, 0, gl.GL_RGB, gl.GL_UNSIGNED_BYTE, imdata)
-
-    return texname, w, h
-
-
 class ImageDraw(Page):
     def __init__(self, window):
         super().__init__(window, "imagedraw", "Image Draw")
         image_path = os.path.join('assets', 'robocute.png')
-        self.texture_id, self.width, self.height = load_texture_from_file(image_path)
+        self.texture = window.ctx.load_texture(image_path, flip=False)
 
     def on_render(self):
         imgui.begin("Image example")
         draw_list = imgui.get_window_draw_list()
-        draw_list.add_image(self.texture_id, (0, 0), (self.width, self.height))
+        draw_list.add_image(self.texture.glo, (0, 0), self.texture.size)
         imgui.end()
 
 def install(app):
