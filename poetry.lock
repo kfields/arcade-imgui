@@ -14,6 +14,10 @@ pymunk = "*"
 pytiled-parser = "0.9.4a3"
 pyyaml = "*"
 
+[package.source]
+reference = "ffea82179c336f2950c83b33acd51fc2938efbff"
+type = "git"
+url = "https://github.com/pythonarcade/arcade.git"
 [[package]]
 category = "main"
 description = "Classes Without Boilerplate"
@@ -126,14 +130,12 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 version = "5.3.1"
 
 [metadata]
-content-hash = "36b8aaff4602f7f3070a647150899c2b9479e683745e1d9419e4d8c67ad306b3"
+content-hash = "e08606288e6ceb14c65dadbe2336d1344ceb10260f27ed3cbe41329166378a82"
 lock-version = "1.0"
 python-versions = "^3.7"
 
 [metadata.files]
-arcade = [
-    {file = "arcade-2.4.2-py3-none-any.whl", hash = "sha256:cd5830783e0b8ce126f1d5d50f26641beaaf377eca9ea5eb224d5bf6469ecbf0"},
-]
+arcade = []
 attrs = [
     {file = "attrs-20.2.0-py2.py3-none-any.whl", hash = "sha256:fce7fc47dfc976152e82d53ff92fa0407700c21acd20886a13777a0d20e655dc"},
     {file = "attrs-20.2.0.tar.gz", hash = "sha256:26b54ddbbb9ee1d34d5d3668dd37d6cf74990ab23c828c2888dccdceee395594"},

@@ -38,6 +38,6 @@ app.use('tooltip')
 app.use('windowdraw')
 app.use('windowmenu')
 
-app.show('font')
+app.show('index')
 
 app.run()
