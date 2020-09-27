@@ -44,7 +44,7 @@ class ShipPage(Page):
 
         # Scale
         changed, self.scale = imgui.drag_float(
-            "Scale", self.scale,
+            "Scale", self.scale, .1
         )
         self.sprite.scale = self.scale
 

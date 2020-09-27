@@ -28,8 +28,7 @@ class App(arcade.Window):
 
 
     def on_draw(self):
-        arcade.start_render()
-        self.page.render()
+        super().on_draw()
         self.gui.render()
 
     def run(self):
@@ -48,4 +47,5 @@ class App(arcade.Window):
         self.pages[page.name] = page
 
     def show(self, name):
-        self.page = self.pages[name]
+        self.page = page = self.pages[name]
+        self.show_view(page)
