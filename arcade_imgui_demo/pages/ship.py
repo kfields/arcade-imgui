@@ -62,10 +62,8 @@ class ShipPage(Page):
         else:
             self.sprite.color = 255, 255, 255
 
-        reset = imgui.button("Reset")
-        if reset:
-            self.rotation = 0
-            self.scale = 1
+        if imgui.button("Reset"):
+            self.reset()
 
         imgui.end()
 
