@@ -47,6 +47,19 @@ class ColorButton(Page):
         imgui.text_colored(f"You chose {self.color_name}", *self.color)
         imgui.end()
 
+class RadioButtonPage(Page):
+    def reset(self):
+        self.radio_active = True
+
+    def render(self):
+        imgui.begin(self.title)
+
+        if imgui.radio_button("Radio button", self.radio_active):
+            self.radio_active = not self.radio_active
+
+        imgui.end()
+
 def install(app):
     app.add_page(Button, "button", "Buttons")
-    app.add_page(ColorButton, "colorbutton", "Color Buttons")
+    app.add_page(ColorButton, "colorbutton", "Buttons - Color")
+    app.add_page(RadioButtonPage, "radiobutton", "Buttons - Radio")

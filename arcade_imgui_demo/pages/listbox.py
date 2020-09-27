@@ -4,32 +4,42 @@ import imgui.core
 
 from arcade_imgui_demo.page import Page
 
+OPTIONS = ["first", "second", "third"]
 
 class ListboxPage(Page):
     def reset(self):
+        self.options = OPTIONS
         self.current = 2
 
     def render(self):    
-        imgui.begin("Example: listbox widget")
+        imgui.begin(self.title)
 
         clicked, self.current = imgui.listbox(
-            "List", self.current, ["first", "second", "third"]
+            "List", self.current, self.options
         )
-
+        imgui.text("selection: ")
+        imgui.same_line()
+        imgui.text(self.options[self.current])
         imgui.end()
 
 class CustomListboxPage(Page):
     def reset(self):
-        self.current = 2
+        self.selected = 'second'
 
     def render(self):    
-        imgui.begin("Example: custom listbox")
+        imgui.begin(self.title)
 
         if imgui.listbox_header("Custom List", 200, 100):
-            imgui.selectable("Selected", True)
-            imgui.selectable("Not Selected", False)
+            for option in OPTIONS:
+                clicked, selected = imgui.selectable(option, option == self.selected)
+                if clicked:
+                    self.selected = option
 
             imgui.listbox_footer()
+
+        imgui.text("selection: ")
+        imgui.same_line()
+        imgui.text(self.selected)
 
         imgui.end()
 
