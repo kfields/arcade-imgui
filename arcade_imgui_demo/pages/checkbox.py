@@ -6,12 +6,11 @@ from arcade_imgui_demo.page import Page
 
 
 class Checkbox(Page):
-    def __init__(self, window):
-        super().__init__(window, "checkbox", "Checkbox")
+    def reset(self):
         self.checkbox1_enabled = True
         self.checkbox2_enabled = False
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: checkboxes")
 
         # note: first element of return two-tuple notifies if there was a click
@@ -26,11 +25,10 @@ class Checkbox(Page):
         imgui.end()
 
 class CheckboxFlags(Page):
-    def __init__(self, window):
-        super().__init__(window, "checkboxflags", "CheckboxFlags")
+    def reset(self):
         self.flags = imgui.WINDOW_NO_RESIZE | imgui.WINDOW_NO_MOVE
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: checkboxes for flags", flags=self.flags)
 
         clicked, self.flags = imgui.checkbox_flags(
@@ -51,7 +49,7 @@ class CheckboxFlags(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Checkbox(app))
-    app.add_page(CheckboxFlags(app))
+    app.add_page(Checkbox, "checkbox", "Checkbox")
+    app.add_page(CheckboxFlags, "checkboxflags", "CheckboxFlags")
 
 

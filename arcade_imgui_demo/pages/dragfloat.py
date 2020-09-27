@@ -6,11 +6,10 @@ from arcade_imgui_demo.page import Page
 
 
 class DragFloat(Page):
-    def __init__(self, window):
-        super().__init__(window, "dragfloat", "Drag Float")
+    def reset(self):
         self.value = 42.0
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: drag float")
         changed, self.value = imgui.drag_float(
             "Default", self.value,
@@ -22,11 +21,10 @@ class DragFloat(Page):
         imgui.end()
 
 class DragFloat2(Page):
-    def __init__(self, window):
-        super().__init__(window, "dragfloat2", "Drag Float 2")
+    def reset(self):
         self.values = 88.0, 42.0
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: drag float 2")
         changed, self.values = imgui.drag_float2(
             "Default", *self.values
@@ -38,11 +36,10 @@ class DragFloat2(Page):
         imgui.end()
 
 class DragFloat3(Page):
-    def __init__(self, window):
-        super().__init__(window, "dragfloat3", "Drag Float 3")
+    def reset(self):
         self.values = 88.0, 42.0, 69.0
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: drag float 3")
         changed, self.values = imgui.drag_float3(
             "Default", *self.values
@@ -54,11 +51,10 @@ class DragFloat3(Page):
         imgui.end()
 
 class DragFloat4(Page):
-    def __init__(self, window):
-        super().__init__(window, "dragfloat4", "Drag Float 4")
+    def reset(self):
         self.values = 88.0, 42.0, 69.0, 0.0
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: drag float 4")
         changed, self.values = imgui.drag_float4(
             "Default", *self.values
@@ -70,7 +66,7 @@ class DragFloat4(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(DragFloat(app))
-    app.add_page(DragFloat2(app))
-    app.add_page(DragFloat3(app))
-    app.add_page(DragFloat4(app))
+    app.add_page(DragFloat, "dragfloat", "Drag Float")
+    app.add_page(DragFloat2, "dragfloat2", "Drag Float 2")
+    app.add_page(DragFloat3, "dragfloat3", "Drag Float 3")
+    app.add_page(DragFloat4, "dragfloat4", "Drag Float 4")

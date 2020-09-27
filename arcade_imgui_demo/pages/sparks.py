@@ -42,14 +42,11 @@ def firework_spark_mutator(particle: arcade.FadeParticle):
     particle.change_y *= 0.92
 
 class SparksPage(Page):
-    def __init__(self, window):
-        super().__init__(window, "sparks", "Sparks")
-
-        arcade.set_background_color(arcade.color.BLACK)
-        self.reset()
-
     def reset(self):
         self.create_emitter()
+
+    def on_show(self):
+        arcade.set_background_color(arcade.color.BLACK)
 
     def create_emitter(self):
         spark_texture = random.choice(SPARK_TEXTURES)
@@ -70,7 +67,7 @@ class SparksPage(Page):
             self.emitter.center_x = 0
         self.emitter.update()
 
-    def on_render(self):
+    def render(self):
         imgui.set_next_window_position(self.window.width - 288, 32, imgui.ONCE)
         imgui.set_next_window_size(256, 256, imgui.ONCE)
 
@@ -86,4 +83,4 @@ class SparksPage(Page):
             arcade.close_window()
 
 def install(app):
-    app.add_page(SparksPage(app))
+    app.add_page(SparksPage, "sparks", "Sparks")

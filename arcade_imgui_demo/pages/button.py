@@ -6,29 +6,47 @@ from arcade_imgui_demo.page import Page
 
 
 class Button(Page):
-    def __init__(self, window):
-        super().__init__(window, "button", "Buttons")
+    def reset(self):
+        self.message = ""
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: buttons")
 
-        imgui.button("Button 1")
-        imgui.button("Button 2")
-
+        if imgui.button("Button 1"):
+            self.message = "You pressed 1!"
+        if imgui.button("Button 2"):
+            self.message = "You pressed 2!"
+        imgui.text(self.message)
         imgui.end()
 
-class ColorButton(Page):
-    def __init__(self, window):
-        super().__init__(window, "colorbutton", "Color Buttons")
+RED = (1, 0, 0, 1)
+GREEN = (0, 1, 0, 1)
+BLUE = (0, 0, 1, 1)
+MAGENTA = (1, 0, 1, 1)
 
-    def on_render(self):
+class ColorButton(Page):
+    def reset(self):
+        self.color = (0,0,0,0)
+        self.color_name = ''
+
+    def render(self):
         imgui.begin("Example: color button")
-        imgui.color_button("Button 1", 1, 0, 0, 1, 0, 10, 10)
-        imgui.color_button("Button 2", 0, 1, 0, 1, 0, 10, 10)
-        imgui.color_button("Wide Button", 0, 0, 1, 1, 0, 20, 10)
-        imgui.color_button("Tall Button", 1, 0, 1, 1, 0, 10, 20)
+        if imgui.color_button("Button 1", *RED, 0, 10, 10):
+            self.color = RED
+            self.color_name = 'Red'
+        if imgui.color_button("Button 2", *GREEN, 0, 10, 10):
+            self.color = GREEN
+            self.color_name = 'Green'
+        if imgui.color_button("Wide Button", *BLUE, 0, 20, 10):
+            self.color = BLUE
+            self.color_name = 'Blue'
+        if imgui.color_button("Tall Button", *MAGENTA, 0, 10, 20):
+            self.color = MAGENTA
+            self.color_name = 'Magenta'
+        #imgui.text(f"You chose {self.color}")
+        imgui.text_colored(f"You chose {self.color_name}", *self.color)
         imgui.end()
 
 def install(app):
-    app.add_page(Button(app))
-    app.add_page(ColorButton(app))
+    app.add_page(Button, "button", "Buttons")
+    app.add_page(ColorButton, "colorbutton", "Color Buttons")

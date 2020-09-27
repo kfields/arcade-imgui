@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Columns(Page):
-    def __init__(self, window):
-        super().__init__(window, "columns", "Columns")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: Columns - File list")
         imgui.columns(4, 'fileLlist')
         imgui.separator()
@@ -44,4 +41,4 @@ class Columns(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Columns(app))
+    app.add_page(Columns, "columns", "Columns")

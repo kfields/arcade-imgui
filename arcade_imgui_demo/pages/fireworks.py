@@ -1,11 +1,3 @@
-"""
-Particle Fireworks
-
-Use a fireworks display to demonstrate "real-world" uses of Emitters and Particles
-
-If Python and Arcade are installed, this example can be run from the command line with:
-python -m arcade.examples.particle_fireworks
-"""
 import arcade
 from arcade import Point, Vector
 from arcade.utils import _Vec2  # bring in "private" class
@@ -168,8 +160,8 @@ class RocketEmitter(arcade.Emitter):
         self.change_y += -0.05
 
 class FireworksPage(Page):
-    def __init__(self, window):
-        super().__init__(window, "fireworks", "Fireworks")
+    def __init__(self, window, name, title):
+        super().__init__(window, name, title)
         # Set the working directory (where we expect to find files) to the same
         # directory this .py file is in. You can leave this out of your own
         # code, but it is needed to easily run the examples using "python -m"
@@ -342,7 +334,7 @@ class FireworksPage(Page):
         arcade.draw_lrtb_rectangle_filled(mid - 2, mid + 2, SPINNER_HEIGHT, 10, arcade.color.DARK_BROWN)
     '''
 
-    def on_render(self):
+    def render(self):
         for e in self.emitters:
             e.draw()
         arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, 25, 0, arcade.color.DARK_GREEN)
@@ -367,4 +359,4 @@ def rocket_smoke_mutator(particle: arcade.LifetimeParticle):
     particle.scale = arcade.lerp(0.5, 3.0, particle.lifetime_elapsed / particle.lifetime_original)
 
 def install(app):
-    app.add_page(FireworksPage(app))
+    app.add_page(FireworksPage, "fireworks", "Fireworks")

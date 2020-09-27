@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Group(Page):
-    def __init__(self, window):
-        super().__init__(window, "group", "Group")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: item groups")
 
         imgui.begin_group()
@@ -29,4 +26,4 @@ class Group(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Group(app))
+    app.add_page(Group, "group", "Group")

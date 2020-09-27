@@ -22,14 +22,11 @@ CLOUD_TEXTURES = [
 ]
 
 class CloudPage(Page):
-    def __init__(self, window):
-        super().__init__(window, "cloud", "Cloud")
-
-        arcade.set_background_color(arcade.color.BLACK)
-        self.reset()
-
     def reset(self):
         self.create_emitter()
+
+    def on_show(self):
+        arcade.set_background_color(arcade.color.BLACK)
 
     def create_emitter(self):
         self.emitter = arcade.Emitter(
@@ -53,7 +50,7 @@ class CloudPage(Page):
             self.emitter.center_x = 0
         self.emitter.update()
 
-    def on_render(self):
+    def render(self):
         imgui.set_next_window_position(self.window.width - 288, 32, imgui.ONCE)
         imgui.set_next_window_size(256, 256, imgui.ONCE)
 
@@ -69,4 +66,4 @@ class CloudPage(Page):
             arcade.close_window()
 
 def install(app):
-    app.add_page(CloudPage(app))
+    app.add_page(CloudPage, "cloud", "Cloud")

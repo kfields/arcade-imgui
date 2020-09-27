@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class WindowMenu(Page):
-    def __init__(self, window):
-        super().__init__(window, "windowmenu", "Window Menu")
-
-    def on_render(self):
+    def render(self):
         flags = imgui.WINDOW_MENU_BAR
 
         imgui.begin("Child Window - File Browser", flags=flags)
@@ -24,4 +21,4 @@ class WindowMenu(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(WindowMenu(app))
+    app.add_page(WindowMenu, "windowmenu", "Window Menu")

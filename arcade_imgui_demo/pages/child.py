@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Child(Page):
-    def __init__(self, window):
-        super().__init__(window, "child", "Child")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: child region")
 
         imgui.begin_child("region", 150, -50, border=True)
@@ -20,4 +17,4 @@ class Child(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Child(app))
+    app.add_page(Child, "child", "Child")

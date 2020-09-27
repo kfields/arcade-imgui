@@ -15,7 +15,7 @@ pytiled-parser = "0.9.4a3"
 pyyaml = "*"
 
 [package.source]
-reference = "ffea82179c336f2950c83b33acd51fc2938efbff"
+reference = "ff024bcffdd30d6f2da5b6f8c0aeb77f2e35e1ba"
 type = "git"
 url = "https://github.com/pythonarcade/arcade.git"
 [[package]]

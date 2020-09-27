@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class DnD(Page):
-    def __init__(self, window):
-        super().__init__(window, "dnd", "Drag & Drop")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: drag and drop")
 
         imgui.button('source')
@@ -28,4 +25,4 @@ class DnD(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(DnD(app))
+    app.add_page(DnD, "dnd", "Drag & Drop")

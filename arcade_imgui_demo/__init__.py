@@ -1,5 +1,6 @@
 import os
 
+import pyglet
 import arcade
 import imgui
 import imgui.core
@@ -42,10 +43,13 @@ class App(arcade.Window):
         module, install = module, module.install
         install(self)
 
-    def add_page(self, page):
+    def add_page(self, klass, name, title):
         # print(page.__dict__)
-        self.pages[page.name] = page
+        self.pages[name] = { 'klass': klass, 'name': name, 'title': title }
 
     def show(self, name):
-        self.page = page = self.pages[name]
-        self.show_view(page)
+        def callback(delta_time):
+            entry = self.pages[name]
+            self.page = page = entry['klass'].create(self, name, entry['title'])
+            self.show_view(page)
+        pyglet.clock.schedule_once(callback, 0)

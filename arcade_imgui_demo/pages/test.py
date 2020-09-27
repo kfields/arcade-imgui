@@ -5,11 +5,8 @@ import imgui.core
 from arcade_imgui_demo.page import Page
 
 
-class Demo(Page):
-    def __init__(self, window):
-        super().__init__(window, "demo", "Demo")
-
-    def on_render(self):
+class TestPage(Page):
+    def render(self):
         if imgui.begin_main_menu_bar():
             if imgui.begin_menu("File", True):
 
@@ -26,4 +23,4 @@ class Demo(Page):
         imgui.show_test_window()
 
 def install(app):
-    app.add_page(Demo(app))
+    app.add_page(TestPage, 'test', 'ImGui Test')

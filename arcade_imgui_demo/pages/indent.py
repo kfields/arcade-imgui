@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Indent(Page):
-    def __init__(self, window):
-        super().__init__(window, "indent", "Indent")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: item indenting")
 
         imgui.text("Some text with bullets:")
@@ -24,5 +21,5 @@ class Indent(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Indent(app))
+    app.add_page(Indent, "indent", "Indent")
 

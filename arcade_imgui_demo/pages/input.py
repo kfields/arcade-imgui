@@ -10,11 +10,10 @@ from arcade_imgui_demo.page import Page
 
 
 class Input(Page):
-    def __init__(self, window):
-        super().__init__(window, "input", "Input")
+    def reset(self):
         self.test_input = 0
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Test Window")
 
         imgui.text("This is the test window.")
@@ -25,11 +24,10 @@ class Input(Page):
         arcade.draw_text(str(self.test_input), 512, 128, arcade.color.WHITE_SMOKE, 64)
 
 class InputDouble(Page):
-    def __init__(self, window):
-        super().__init__(window, "inputdouble", "Input Double")
+    def reset(self):
         self.double_val = 3.14159265358979323846
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Test Window")
 
         imgui.text("This is the test window.")
@@ -41,11 +39,10 @@ class InputDouble(Page):
         arcade.draw_text(str(self.double_val), 512, 128, arcade.color.WHITE_SMOKE, 64)
 
 class InputFloat(Page):
-    def __init__(self, window):
-        super().__init__(window, "inputfloat", "Input Float")
+    def reset(self):
         self.float_val = 0.4
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Test Window")
 
         imgui.text("This is the test window.")
@@ -56,6 +53,6 @@ class InputFloat(Page):
         arcade.draw_text(str(self.float_val), 512, 128, arcade.color.WHITE_SMOKE, 64)
 
 def install(app):
-    app.add_page(Input(app))
-    app.add_page(InputDouble(app))
-    app.add_page(InputFloat(app))
+    app.add_page(Input, "input", "Input")
+    app.add_page(InputDouble, "inputdouble", "Input Double")
+    app.add_page(InputFloat, "inputfloat", "Input Float")

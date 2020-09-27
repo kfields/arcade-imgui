@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class FontImage(Page):
-    def __init__(self, window):
-        super().__init__(window, "fontimage", "Font Image")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Image example")
         texture_id = imgui.get_io().fonts.texture_id
         draw_list = imgui.get_window_draw_list()
@@ -17,4 +14,4 @@ class FontImage(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(FontImage(app))
+    app.add_page(FontImage, "fontimage", "Font Image")

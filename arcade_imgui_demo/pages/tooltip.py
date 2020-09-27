@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Tooltip(Page):
-    def __init__(self, window):
-        super().__init__(window, "tooltip", "Tooltip")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: tooltip")
         imgui.button("Click me!")
         if imgui.is_item_hovered():
@@ -22,4 +19,4 @@ class Tooltip(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Tooltip(app))
+    app.add_page(Tooltip, "tooltip", "Tooltip")

@@ -8,6 +8,15 @@ class Page(arcade.View):
         self.name = name
         self.title = title
 
+    def reset(self):
+        pass
+
+    @classmethod
+    def create(self, app, name, title):
+        page = self(app, name, title)
+        page.reset()
+        return page
+
     def on_draw(self):
         arcade.start_render()
 
@@ -18,25 +27,26 @@ class Page(arcade.View):
         
         imgui.begin("Examples")
 
-        titles = [page.title for page in self.window.pages.values()]
-        names = [page.name for page in self.window.pages.values()]
+        titles = [page['title'] for page in self.window.pages.values()]
+        names = [page['name'] for page in self.window.pages.values()]
 
         if imgui.listbox_header("Examples", -1, -1):
 
-            for page in self.window.pages.values():
-                opened, selected = imgui.selectable(page.title, page.name == self.window.page.name)
-                if selected:
-                    self.window.show(page.name)
-                    imgui.set_next_window_position(288, 32, imgui.ONCE)
-                    imgui.set_next_window_size(512, 512, imgui.ONCE)
+            for entry in self.window.pages.values():
+                opened, selected = imgui.selectable(entry['title'], entry['name'] == self.window.page.name)
+                if opened:
+                    self.window.show(entry['name'])
 
             imgui.listbox_footer()
         
         imgui.end()
 
-        self.on_render()
+        imgui.set_next_window_position(288, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
+        self.render()
         
         imgui.end_frame()
 
-    def on_render(self):
+    def render(self):
         pass

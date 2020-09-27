@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class MainMenu(Page):
-    def __init__(self, window):
-        super().__init__(window, "mainmenu", "Main Menu")
-
-    def on_render(self):
+    def render(self):
         if imgui.begin_main_menu_bar():
             # first menu dropdown
             if imgui.begin_menu('File', True):
@@ -26,4 +23,4 @@ class MainMenu(Page):
             imgui.end_main_menu_bar()
 
 def install(app):
-    app.add_page(MainMenu(app))
+    app.add_page(MainMenu, "mainmenu", "Main Menu")

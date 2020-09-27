@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class WindowDraw(Page):
-    def __init__(self, window):
-        super().__init__(window, "windowdraw", "Window Draw")
-
-    def on_render(self):
+    def render(self):
         pos_x = 10
         pos_y = 10
         sz = 20
@@ -26,4 +23,4 @@ class WindowDraw(Page):
         draw_list.add_rect_filled(pos_x, pos_y, pos_x+sz, pos_y+sz, rgba_color)
 
 def install(app):
-    app.add_page(WindowDraw(app))
+    app.add_page(WindowDraw, "windowdraw", "Window Draw")

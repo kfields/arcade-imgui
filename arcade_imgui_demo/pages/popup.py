@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Popup(Page):
-    def __init__(self, window):
-        super().__init__(window, "popup", "Popup")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: simple popup")
 
         if imgui.button("select"):
@@ -28,10 +25,7 @@ class Popup(Page):
         imgui.end()
 
 class PopupContextView(Page):
-    def __init__(self, window):
-        super().__init__(window, "popupcontextview", "Popup Context View")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: popup context view")
         imgui.text("Right-click to set value.")
         if imgui.begin_popup_context_item("Item Context Menu", mouse_button=0):
@@ -40,10 +34,7 @@ class PopupContextView(Page):
         imgui.end()
 
 class PopupContextWindow(Page):
-    def __init__(self, window):
-        super().__init__(window, "popupcontextwindow", "Popup Context Window")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: popup context window")
         if imgui.begin_popup_context_window(mouse_button=0):
             imgui.selectable("Clear")
@@ -51,10 +42,7 @@ class PopupContextWindow(Page):
         imgui.end()
 
 class PopupModal(Page):
-    def __init__(self, window):
-        super().__init__(window, "popupmodal", "Popup Modal")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: simple popup modal")
 
         if imgui.button("Open Modal popup"):
@@ -73,8 +61,8 @@ class PopupModal(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Popup(app))
-    app.add_page(PopupContextView(app))
-    app.add_page(PopupContextWindow(app))
-    app.add_page(PopupModal(app))
+    app.add_page(Popup, "popup", "Popup")
+    app.add_page(PopupContextView, "popupcontextview", "Popup Context View")
+    app.add_page(PopupContextWindow, "popupcontextwindow", "Popup Context Window")
+    app.add_page(PopupModal, "popupmodal", "Popup Modal")
 

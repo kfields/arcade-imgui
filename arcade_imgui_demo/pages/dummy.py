@@ -6,10 +6,7 @@ from arcade_imgui_demo.page import Page
 
 
 class Dummy(Page):
-    def __init__(self, window):
-        super().__init__(window, "dummy", "Dummy")
-
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: dummy elements")
 
         imgui.text("Some text with bullets:")
@@ -22,4 +19,4 @@ class Dummy(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(Dummy(app))
+    app.add_page(Dummy, "dummy", "Dummy")

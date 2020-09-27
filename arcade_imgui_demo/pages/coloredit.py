@@ -6,12 +6,11 @@ from arcade_imgui_demo.page import Page
 
 
 class ColorEdit3(Page):
-    def __init__(self, window):
-        super().__init__(window, "coloredit3", "Color Edit 3")
+    def reset(self):
         self.color_1 = 1., .0, .5
         self.color_2 = 0., .8, .3
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: color edit without alpha")
 
         # note: first element of return two-tuple notifies if the color was changed
@@ -23,11 +22,10 @@ class ColorEdit3(Page):
         imgui.end()
 
 class ColorEdit4(Page):
-    def __init__(self, window):
-        super().__init__(window, "coloredit4", "Color Edit 4")
+    def reset(self):
         self.color = 1., .0, .5, 1.
 
-    def on_render(self):
+    def render(self):
         imgui.begin("Example: color edit with alpha")
 
         # note: first element of return two-tuple notifies if the color was changed
@@ -39,5 +37,5 @@ class ColorEdit4(Page):
         imgui.end()
 
 def install(app):
-    app.add_page(ColorEdit3(app))
-    app.add_page(ColorEdit4(app))
+    app.add_page(ColorEdit3, "coloredit3", "Color Edit 3")
+    app.add_page(ColorEdit4, "coloredit4", "Color Edit 4")

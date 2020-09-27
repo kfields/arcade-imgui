@@ -6,11 +6,8 @@ from arcade_imgui_demo.page import Page
 
 
 class Bullet(Page):
-    def __init__(self, window):
-        super().__init__(window, "bullet", "Bullet")
-
-    def on_render(self):
-        imgui.begin("Example: bullets")
+    def render(self):
+        imgui.begin(self.title)
 
         for i in range(10):
             imgui.bullet()
@@ -19,16 +16,13 @@ class Bullet(Page):
 
 
 class BulletText(Page):
-    def __init__(self, window):
-        super().__init__(window, "bullettext", "Bullet Text")
-
-    def on_render(self):
-        imgui.begin("Example: bullet text")
+    def render(self):
+        imgui.begin(self.title)
         imgui.bullet_text("Bullet 1")
         imgui.bullet_text("Bullet 2")
         imgui.bullet_text("Bullet 3")
         imgui.end()
 
 def install(app):
-    app.add_page(Bullet(app))
-    app.add_page(BulletText(app))
+    app.add_page(Bullet, "bullet", "Bullets")
+    app.add_page(BulletText,  "bullettext", "Bullets with Text")
