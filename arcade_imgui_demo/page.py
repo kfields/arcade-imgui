@@ -22,6 +22,20 @@ class Page(arcade.View):
 
         imgui.new_frame()
         
+        if self.window.view_metrics:
+            imgui.show_metrics_window()
+
+        self.draw_mainmenu()
+        self.draw_navbar()
+
+        imgui.set_next_window_position(288, 32, imgui.ONCE)
+        imgui.set_next_window_size(512, 512, imgui.ONCE)
+
+        self.render()
+        
+        imgui.end_frame()
+
+    def draw_navbar(self):
         imgui.set_next_window_position(16, 32, imgui.ONCE)
         imgui.set_next_window_size(256, 732, imgui.ONCE)
         
@@ -41,12 +55,27 @@ class Page(arcade.View):
         
         imgui.end()
 
-        imgui.set_next_window_position(288, 32, imgui.ONCE)
-        imgui.set_next_window_size(512, 512, imgui.ONCE)
+    def draw_mainmenu(self):
+        if imgui.begin_main_menu_bar():
+            # File
+            if imgui.begin_menu('File', True):
+                clicked_quit, selected_quit = imgui.menu_item(
+                    "Quit", 'Cmd+Q', False, True
+                )
 
-        self.render()
-        
-        imgui.end_frame()
+                if clicked_quit:
+                    exit(1)
+
+                imgui.end_menu()
+            # View
+            if imgui.begin_menu('View', True):
+                clicked_metrics, self.window.view_metrics = imgui.menu_item(
+                    "Metrics", 'Cmd+M', self.window.view_metrics, True
+                )
+
+                imgui.end_menu()
+
+            imgui.end_main_menu_bar()
 
     def render(self):
         pass
