@@ -23,7 +23,7 @@ class Page(arcade.View):
         imgui.new_frame()
         
         if self.window.view_metrics:
-            imgui.show_metrics_window()
+            self.window.view_metrics = imgui.show_metrics_window(closable=True)
 
         self.draw_mainmenu()
         self.draw_navbar()

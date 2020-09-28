@@ -8,7 +8,7 @@ from arcade_imgui_demo.page import Page
 class Columns(Page):
     def render(self):
         imgui.begin("Example: Columns - File list")
-        imgui.columns(4, 'fileLlist')
+        imgui.columns(4, 'fileList')
         imgui.separator()
         imgui.text("ID")
         imgui.next_column()
