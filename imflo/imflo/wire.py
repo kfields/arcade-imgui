@@ -2,9 +2,11 @@ import arcade
 import imgui
 
 class Wire:
-    def __init__(self, input, output):
+    def __init__(self, output, input):
         self.input = input
         self.output = output
+        input.add_wire(self)
+        output.add_wire(self)
 
     def draw(self):
         x, y = self.output.get_position()

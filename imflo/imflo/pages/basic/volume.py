@@ -1,15 +1,27 @@
+from rx.subject import Subject
+
 import arcade
 import imgui
 
 from imflo.node import Node
 from imflo.pin import Output
 
-class SinNode(Node):
+class VolumeNode(Node):
     def __init__(self, page):
         super().__init__(page)
-        self.value = 88
-        self.output = Output(self, 'output')
+        self._value = 88
+        self.subject = Subject()
+        self.output = Output(self, 'output', self.subject)
         self.add_pin(self.output)
+
+    @property
+    def value(self):
+        return self._value
+
+    @value.setter
+    def value(self, value):
+        self._value = value
+        self.subject.on_next(value)
 
     def draw(self):
         width = 20
@@ -17,7 +29,7 @@ class SinNode(Node):
 
         imgui.set_next_window_size(160, 160, imgui.ONCE)
 
-        imgui.begin("Sin")
+        imgui.begin("Volume")
         self.mark_output(self.output)
         changed, self.value = imgui.v_slider_int(
             "output",

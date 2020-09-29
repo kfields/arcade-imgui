@@ -20,7 +20,7 @@ class ConnectPage(Page):
         #self.wires.append(Wire(sin_node.get_pin('output'), meter_node.get_pin('input')))
 
     def connect(self, input, output):
-        self.wires.append(Wire(input, output))
+        self.wires.append(Wire(output, input))
         
     def draw(self):
         for node in self.nodes:
