@@ -5,12 +5,12 @@ from math import sin
 import arcade
 import imgui
 
-from imflo.node import Node
-from imflo.pin import Input
+from imdemo.pages.nodes.node import Node
+from imdemo.pages.nodes.pin import Input
 
 class MeterNode(Node):
-    def __init__(self, page):
-        super().__init__(page)
+    def __init__(self):
+        super().__init__()
         self.values = array('f', [sin(x * 0.1) for x in range(100)])
         self.input = Input(self, 'input')
         self.add_pin(self.input)

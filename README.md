@@ -8,25 +8,29 @@
 
 Get [Poetry](https://python-poetry.org/)
 
-## Install
+## Clone
 
-Clone the repository, setup, start shell in a virtual environment ...
+Clone the repository and change directory
 
        git clone https://github.com/kfields/arcade-imgui.git
        cd arcade-imgui
-       poetry install
-       poetry shell
-       
 
+## Run the Demo
 
-## Run
-
-### All in one Demo
-
-        python demo.py
+        cd imdemo
+        poetry install
+        poetry shell
+        python imdemo
 
 ### Individual Examples
 
         python examples/bullet.py
         python examples/colors.py
         etc ...
+
+## Run the ImFlo Demo
+
+        cd imflo
+        poetry install
+        poetry shell
+        python imdemo

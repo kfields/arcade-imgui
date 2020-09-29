@@ -2,8 +2,7 @@ import arcade
 import imgui
 
 from imflo.node import Node
-from imflo.pin import Input
-
+from imflo.pin import Output
 
 class SinNode(Node):
     def __init__(self, page):

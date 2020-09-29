@@ -1,13 +1,13 @@
 import arcade
 import imgui
 
-from imflo.node import Node
-from imflo.pin import Input
+from imdemo.pages.nodes.node import Node
+from imdemo.pages.nodes.pin import Output
 
 
 class SinNode(Node):
-    def __init__(self, page):
-        super().__init__(page)
+    def __init__(self):
+        super().__init__()
         self.value = 88
         self.output = Output(self, 'output')
         self.add_pin(self.output)
@@ -19,12 +19,18 @@ class SinNode(Node):
         imgui.set_next_window_size(160, 160, imgui.ONCE)
 
         imgui.begin("Sin")
-        self.mark_output(self.output)
+        imgui.begin_group()
         changed, self.value = imgui.v_slider_int(
-            "output",
+            "value",
             width, height, self.value,
             min_value=0, max_value=100,
             format="%d"
         )
+        imgui.end_group()
+        imgui.same_line(spacing=16)
+        imgui.begin_group()
+        imgui.text('output')
+        self.mark_output(self.output)
+        imgui.end_group()
         imgui.end()
 

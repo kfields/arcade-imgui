@@ -2,7 +2,8 @@ import arcade
 import imgui
 
 class Node:
-    def __init__(self):
+    def __init__(self, page):
+        self.page = page
         self.pins = {}
 
     def add_pin(self, pin):
