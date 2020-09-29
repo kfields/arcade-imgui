@@ -38,7 +38,7 @@ class App(arcade.Window):
 
     def use(self, name):
         import importlib.util
-        spec = importlib.util.spec_from_file_location("module.name", os.path.join('pages', f"{name}.py"))
+        spec = importlib.util.find_spec(f"arcade_imgui_demo.pages.{name}")
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
         module, install = module, module.install
