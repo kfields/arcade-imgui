@@ -23,8 +23,11 @@ class LedNode(Node):
         #imgui.set_next_window_size(256, 256, imgui.ONCE)
 
         imgui.begin("Led")
-        self.mark_input(self.input)
-        imgui.text('input')
+
+        self.begin_input(self.input)
+        imgui.button('input')
+        self.end_input()
+
         imgui.same_line(spacing=16)
         imgui.text(str(self.value))
         imgui.end()

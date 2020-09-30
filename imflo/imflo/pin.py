@@ -31,3 +31,6 @@ class Output(Pin):
     def __init__(self, node, name, observable):
         super().__init__(node, name)
         self.observable = observable
+
+    def write(self, value):
+        self.observable.on_next(value)

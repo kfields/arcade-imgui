@@ -8,6 +8,7 @@ app = App()
 
 app.use('basic')
 app.use('connect')
+app.use('sine')
 
 app.show('connect')
 

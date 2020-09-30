@@ -10,7 +10,7 @@ import imgui
 from imflo.node import Node
 from imflo.pin import Input
 
-class MeterNode(Node):
+class ScopeNode(Node):
     def __init__(self, page):
         super().__init__(page)
         #self.values = array('f', [sin(x * 0.1) for x in range(100)])
@@ -25,19 +25,12 @@ class MeterNode(Node):
             self.values.popleft()
 
     def draw(self):
-        imgui.begin("Meter")
-        self.mark_input(self.input)
+        imgui.begin("Scope")
+        self.begin_input(self.input)
         imgui.button('input')
-        if imgui.begin_drag_drop_target():
-            payload = imgui.accept_drag_drop_payload('itemtype')
-            if payload is not None:
-                payload = self.page.end_dnd()
-                print('Received:', payload)
-                self.page.connect(self.input, payload)
-            imgui.end_drag_drop_target()
-
+        self.end_input()
         imgui.same_line(spacing=16)
-        imgui.plot_lines("Sin(t)", np.array(self.values).astype(np.float32))
+        imgui.plot_lines("Sin(t)", np.array(self.values).astype(np.float32), graph_size=imgui.get_content_region_available())
 
         imgui.end()
 

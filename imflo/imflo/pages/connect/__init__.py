@@ -4,8 +4,8 @@ import imgui.core
 
 from imflo.page import Page
 
-from .sin import SinNode
-from .meter import MeterNode
+from .volume import VolumeNode
+from .led import LedNode
 from imflo.wire import Wire
 
 class ConnectPage(Page):
@@ -13,15 +13,11 @@ class ConnectPage(Page):
         super().__init__(window, name, title)
         self.nodes = []
         self.wires = []
-        sin_node = SinNode(self)
-        meter_node = MeterNode(self)
-        self.nodes.append(sin_node)
-        self.nodes.append(meter_node)
-        #self.wires.append(Wire(sin_node.get_pin('output'), meter_node.get_pin('input')))
+        volume_node = VolumeNode(self)
+        led_node = LedNode(self)
+        self.nodes.append(volume_node)
+        self.nodes.append(led_node)
 
-    def connect(self, input, output):
-        self.wires.append(Wire(output, input))
-        
     def draw(self):
         for node in self.nodes:
             node.draw()

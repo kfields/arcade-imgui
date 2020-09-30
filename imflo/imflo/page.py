@@ -2,6 +2,8 @@ import arcade
 import imgui
 import imgui.core
 
+from imflo.wire import Wire
+
 class Page(arcade.View):
     def __init__(self, window, name, title):
         super().__init__(window)
@@ -9,8 +11,18 @@ class Page(arcade.View):
         self.title = title
         self.dragged = None
 
+        self.nodes = []
+        self.wires = []
+
     def reset(self):
         pass
+
+    def add_node(self, node):
+        self.nodes.append(node)
+        return node
+
+    def connect(self, input, output):
+        self.wires.append(Wire(output, input))
 
     @classmethod
     def create(self, app, name, title):

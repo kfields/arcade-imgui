@@ -12,7 +12,7 @@ class Node:
     def get_pin(self, name):
         return self.pins[name]
 
-    def mark_input(self, pin):
+    def begin_input(self, pin):
         x, y = imgui.get_cursor_screen_pos()
         wx, wy = imgui.get_window_position()
         x = wx - 8
@@ -20,7 +20,16 @@ class Node:
         pin.set_position(pos)
         return pos
 
-    def mark_output(self, pin):
+    def end_input(self):
+        if imgui.begin_drag_drop_target():
+            payload = imgui.accept_drag_drop_payload('itemtype')
+            if payload is not None:
+                payload = self.page.end_dnd()
+                print('Received:', payload)
+                self.page.connect(self.input, payload)
+            imgui.end_drag_drop_target()
+
+    def begin_output(self, pin):
         x, y = imgui.get_cursor_screen_pos()
         wx, wy = imgui.get_window_position()
         ww, wh = imgui.get_window_size()
@@ -29,6 +38,16 @@ class Node:
         pos = (x, y)
         pin.set_position(pos)
         return pos
+
+    def end_output(self):
+        if imgui.begin_drag_drop_source():
+            imgui.set_drag_drop_payload('itemtype', b'payload')
+            self.page.start_dnd(self.output)
+            imgui.button('dragged source')
+            imgui.end_drag_drop_source()
+
+    def update(self, delta_time):
+        pass
 
     def draw(self):
         pass
