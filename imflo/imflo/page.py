@@ -15,13 +15,14 @@ class Page(arcade.View):
         self.wires = []
 
     def reset(self):
-        pass
+        for node in self.nodes:
+            node.reset()
 
     def add_node(self, node):
         self.nodes.append(node)
         return node
 
-    def connect(self, input, output):
+    def connect(self, output, input):
         self.wires.append(Wire(output, input))
 
     @classmethod
@@ -37,7 +38,11 @@ class Page(arcade.View):
         dragged = self.dragged
         self.dragged = None
         return dragged
-        
+
+    def update(self, delta_time):
+        for node in self.nodes:
+            node.update(delta_time)
+
     def on_draw(self):
         arcade.start_render()
 
@@ -99,4 +104,8 @@ class Page(arcade.View):
             imgui.end_main_menu_bar()
 
     def draw(self):
-        pass
+        for node in self.nodes:
+            node.draw()
+
+        for wire in self.wires:
+            wire.draw()

@@ -6,6 +6,9 @@ class Node:
         self.page = page
         self.pins = {}
 
+    def reset(self):
+        pass
+
     def add_pin(self, pin):
         self.pins[pin.name] = pin
 
@@ -26,7 +29,7 @@ class Node:
             if payload is not None:
                 payload = self.page.end_dnd()
                 print('Received:', payload)
-                self.page.connect(self.input, payload)
+                self.page.connect(payload, self.input)
             imgui.end_drag_drop_target()
 
     def begin_output(self, pin):

@@ -32,7 +32,7 @@ class VolumeNode(Node):
         imgui.begin("Volume")
 
         changed, self.value = imgui.v_slider_int(
-            "output",
+            "volume",
             width, height, self.value,
             min_value=0, max_value=100,
             format="%d"

@@ -9,7 +9,8 @@ app = App()
 app.use('basic')
 app.use('connect')
 app.use('sine')
+app.use('sparks')
 
-app.show('connect')
+app.show('basic')
 
 app.run()
