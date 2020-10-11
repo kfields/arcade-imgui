@@ -39,6 +39,7 @@ class App(arcade.Window):
 
     def use(self, name):
         import importlib.util
+        #spec = importlib.util.find_spec(f"imdemo.pages.{name}")
         spec = importlib.util.find_spec(f"imdemo.pages.{name}")
         module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)

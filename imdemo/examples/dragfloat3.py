@@ -1,6 +1,5 @@
 import arcade
 import imgui
-import imgui.core
 
 from arcade_imgui import ArcadeRenderer
 
