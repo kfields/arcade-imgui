@@ -9,7 +9,6 @@ FBSIZE = (512, 256)
 class MyGui:
     def __init__(self, window):
         self.window = window
-        # Must create or set the context before instantiating the renderer
         gui.create_context()
         self.renderer = ArcadeRenderer(window)
         self.sprite = arcade.Sprite(
@@ -21,8 +20,6 @@ class MyGui:
         image = self.sprite.texture.image
         self.texture = window.ctx.texture(image.size, components=3, data=image.convert("RGB").tobytes())
         self.offscreen = window.ctx.framebuffer(color_attachments=window.ctx.texture(FBSIZE))
-        #self.offscreen_color_attachment = window.ctx.texture(FBSIZE)
-        #self.offscreen = window.ctx.framebuffer(color_attachments=[self.offscreen_color_attachment])
         self.reset()
 
     def reset(self):
@@ -34,10 +31,6 @@ class MyGui:
 
     def draw(self):
         gui.new_frame()
-
-        #with self.offscreen:
-        #    self.sprite.draw()
-
 
         gui.set_next_window_position(self.window.width - 256 - 16, 32, gui.ONCE)
         gui.set_next_window_size(256, 256, gui.ONCE)
@@ -74,17 +67,17 @@ class MyGui:
         if gui.button("Reset"):
             self.reset()
 
-        gui.image(self.offscreen.glo.value, *FBSIZE)
+        gui.image(self.offscreen.glo, *FBSIZE)
 
         gui.end()
 
         self.offscreen.use()
         self.offscreen.clear((0, 0, 0, 0))
         vp = arcade.get_viewport()
-        #arcade.set_viewport(0, FBSIZE[0], 0, FBSIZE[1])
+        arcade.set_viewport(0, FBSIZE[0], 0, FBSIZE[1])
         self.sprite.draw()
+        
         self.window.use()
-        #self.window.ctx.screen.use()
         arcade.set_viewport(*vp)
         self.sprite.draw()
 
