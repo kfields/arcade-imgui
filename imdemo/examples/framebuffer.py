@@ -32,13 +32,14 @@ class MyGui:
     def draw(self):
         gui.new_frame()
 
-        gui.set_next_window_position(self.window.width - 256 - 16, 32, gui.ONCE)
-        gui.set_next_window_size(256, 256, gui.ONCE)
+        #gui.set_next_window_position(self.window.width - 256 - 16, 32, gui.ONCE)
+        gui.set_next_window_size(512, 512, gui.ONCE)
 
         gui.begin("Framebuffer Example")
 
         # Rotation
-        gui.image(self.texture.glo.value, *self.texture.size)
+        gui.image(self.texture.glo, *self.texture.size)
+        
         changed, self.rotation = gui.drag_float(
             "Rotation", self.rotation,
         )
@@ -67,7 +68,8 @@ class MyGui:
         if gui.button("Reset"):
             self.reset()
 
-        gui.image(self.offscreen.glo, *FBSIZE)
+        fbtexture = self.offscreen.color_attachments[0]
+        gui.image(fbtexture.glo, *FBSIZE)
 
         gui.end()
 
@@ -75,8 +77,13 @@ class MyGui:
         self.offscreen.clear((0, 0, 0, 0))
         vp = arcade.get_viewport()
         arcade.set_viewport(0, FBSIZE[0], 0, FBSIZE[1])
+        prj = self.window.ctx.projection_2d
+        self.window.ctx.projection_2d = (0, FBSIZE[0],FBSIZE[1],0)
         self.sprite.draw()
-        
+        arcade.draw_text("Simple line of text in 20 point", 0,0 , arcade.color.WHITE, 20)
+
+        self.window.ctx.projection_2d = prj
+
         self.window.use()
         arcade.set_viewport(*vp)
         self.sprite.draw()
