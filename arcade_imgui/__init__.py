@@ -1,7 +1,7 @@
 import ctypes
 
 import imgui
-from pyglet import gl
+from pyglet import gl, clock
 from pyglet.window import key, mouse
 from arcade.gl import BufferDescription, Context
 
@@ -234,10 +234,10 @@ class PygletMixin:
         if button == mouse.LEFT:
             self.io.mouse_down[0] = 1
 
-        if button == mouse.MIDDLE:
+        if button == mouse.RIGHT:
             self.io.mouse_down[1] = 1
 
-        if button == mouse.RIGHT:
+        if button == mouse.MIDDLE:
             self.io.mouse_down[2] = 1
 
     def on_mouse_press(self, x, y, button, modifiers):
@@ -246,23 +246,26 @@ class PygletMixin:
         if button == mouse.LEFT:
             self.io.mouse_down[0] = 1
 
-        if button == mouse.MIDDLE:
+        if button == mouse.RIGHT:
             self.io.mouse_down[1] = 1
 
-        if button == mouse.RIGHT:
+        if button == mouse.MIDDLE:
             self.io.mouse_down[2] = 1
 
     def on_mouse_release(self, x, y, button, modifiers):
         self.io.mouse_pos = x, self.io.display_size.y - y
 
+        code = 0; delay = .2
         if button == mouse.LEFT:
-            self.io.mouse_down[0] = 0
-
-        if button == mouse.MIDDLE:
-            self.io.mouse_down[1] = 0
-
-        if button == mouse.RIGHT:
-            self.io.mouse_down[2] = 0
+            delay = 0
+        elif button == mouse.RIGHT:
+            code = 1
+        elif button == mouse.MIDDLE:
+            code = 2
+        # Need a slight delay for touch events
+        def set_mouse(delta_time):
+            self.io.mouse_down[code] = 0
+        clock.schedule_once(set_mouse, delay)
 
     def on_mouse_scroll(self, x, y, mods, scroll):
         self.io.mouse_wheel = scroll

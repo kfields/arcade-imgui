@@ -28,7 +28,7 @@ class PopupContextView(Page):
     def draw(self):
         imgui.begin("Example: popup context view")
         imgui.text("Right-click to set value.")
-        if imgui.begin_popup_context_item("Item Context Menu", mouse_button=0):
+        if imgui.begin_popup_context_item("Item Context Menu"):
             imgui.selectable("Set to Zero")
             imgui.end_popup()
         imgui.end()
@@ -36,7 +36,7 @@ class PopupContextView(Page):
 class PopupContextWindow(Page):
     def draw(self):
         imgui.begin("Example: popup context window")
-        if imgui.begin_popup_context_window(mouse_button=0):
+        if imgui.begin_popup_context_window():
             imgui.selectable("Clear")
             imgui.end_popup()
         imgui.end()
