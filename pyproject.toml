@@ -1,18 +1,18 @@
 [tool.poetry]
 name = "arcade-imgui"
-version = "0.1.0"
+version = "0.2.0"
 description = "IMGUI integration for arcade"
 authors = ["Kurtis Fields <kurtisfields@gmail.com>"]
 license = "MIT"
 
 classifiers = [
-    "Development Status :: 2 - Pre-Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
     "Topic :: Games/Entertainment :: Arcade",
     "Topic :: Software Development :: User Interfaces",
     "Topic :: Software Development :: Libraries :: Python Modules",
@@ -25,13 +25,13 @@ documentation="https://github.com/kfields/arcade-imgui"
 keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-# arcade = "^2.4.2"
-imgui = "^1.2.0"
-arcade = {git = "https://github.com/pythonarcade/arcade.git", rev = "development"}
+python = "^3.9"
+arcade = "^2.5.7"
+imgui = "^1.3.0"
 
 [tool.poetry.dev-dependencies]
+pytest = "^5.2"
 
 [build-system]
-requires = ["poetry>=0.12"]
-build-backend = "poetry.masonry.api"
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

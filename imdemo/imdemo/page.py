@@ -79,3 +79,9 @@ class Page(arcade.View):
 
     def draw(self):
         pass
+
+    def rel(self, x, y):
+        pos = imgui.get_cursor_screen_pos()
+        x1 = pos[0] + x
+        y1 = pos[1] + y
+        return x1, y1

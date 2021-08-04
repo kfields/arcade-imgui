@@ -14,9 +14,11 @@ class ImageDraw(Page):
         self.texture = window.ctx.load_texture(image_path, flip=False)
 
     def draw(self):
-        imgui.begin("Image example")
+        imgui.begin("Image Draw")
         draw_list = imgui.get_window_draw_list()
-        draw_list.add_image(self.texture.glo, (0, 0), self.texture.size)
+        pos = self.rel(0,0)
+        pos2 = self.texture.size[0] + pos[0], self.texture.size[1] + pos[1]
+        draw_list.add_image(self.texture.glo, pos, pos2)
         imgui.end()
 
 def install(app):

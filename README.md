@@ -14,23 +14,16 @@ Clone the repository and change directory
 
        git clone https://github.com/kfields/arcade-imgui.git
        cd arcade-imgui
+       poetry shell
 
 ## Run the Demo
 
         cd imdemo
         poetry install
-        poetry shell
         python imdemo
-
-### Individual Examples
-
-        python examples/bullet.py
-        python examples/colors.py
-        etc ...
 
 ## Run the ImFlo Demo
 
         cd imflo
         poetry install
-        poetry shell
-        python imdemo
+        python imflo

@@ -7,10 +7,12 @@ from imdemo.page import Page
 
 class FontImage(Page):
     def draw(self):
-        imgui.begin("Image example")
+        imgui.begin("Font Image")
         texture_id = imgui.get_io().fonts.texture_id
         draw_list = imgui.get_window_draw_list()
-        draw_list.add_image(texture_id, (128, 64), (512, 256), col=imgui.get_color_u32_rgba(0.5,0.5,1,1))
+        pos = self.rel(0,0)
+        pos2 = self.rel(512, 64)
+        draw_list.add_image(texture_id, pos, pos2, col=imgui.get_color_u32_rgba(0.5,0.5,1,1))
         imgui.end()
 
 def install(app):
