@@ -56,20 +56,21 @@ class ArcadeGLRenderer(BaseOpenGLRenderer):
         io = self.io    
 
         display_width, display_height = io.display_size
-        fb_width = int(display_width * io.display_fb_scale[0])
-        fb_height = int(display_height * io.display_fb_scale[1])
+        display_fb_scale = io.display_fb_scale
+        fb_width = int(display_width * display_fb_scale[0])
+        fb_height = int(display_height * display_fb_scale[1])
 
         if fb_width == 0 or fb_height == 0:
             return
 
         self._program["ProjMtx"] = (
-            2.0 / display_width, 0.0, 0.0, 0.0,
-            0.0, 2.0 / -display_height, 0.0, 0.0,
+            2.0 / fb_width, 0.0, 0.0, 0.0,
+            0.0, 2.0 / -fb_height, 0.0, 0.0,
             0.0, 0.0, -1.0, 0.0,
             -1.0, 1.0, 0.0, 1.0,
         )
 
-        draw_data.scale_clip_rects(*io.display_fb_scale)
+        draw_data.scale_clip_rects(*display_fb_scale)
 
         self._ctx.enable_only(self._ctx.BLEND)
         self._ctx.blend_func = self._ctx.BLEND_DEFAULT
@@ -276,7 +277,6 @@ class PygletMixin:
 
 class ArcadeRenderer(PygletMixin, ArcadeGLRenderer):
     def __init__(self, window, attach_callbacks=True):
-        # super().__init__()
         super().__init__(window)
         window_size = window.get_size()
         viewport_size = window.get_viewport_size()
