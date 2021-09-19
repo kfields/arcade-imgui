@@ -6,7 +6,7 @@ authors = ["Kurtis Fields <kurtisfields@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = ">=3.9, <3.10"
-arcade-imgui = {path = ".."}
+arcade-imgui = {path = "..", develop = true}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

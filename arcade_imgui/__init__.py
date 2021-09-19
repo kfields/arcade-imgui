@@ -173,7 +173,7 @@ class PygletMixin:
         # It is conceivable that the pyglet version will not be solely
         # determinant of whether we use the fixed or programmable, so do some
         # minor introspection here to check.
-        if hasattr(window, 'get_viewport_size'):
+        if hasattr(window, 'get_viewport'):
             viewport = window.get_viewport()
             viewport_size = viewport[1] - viewport[0], viewport[3] - viewport[2]
             self.io.display_fb_scale = compute_fb_scale(window_size, viewport_size)
