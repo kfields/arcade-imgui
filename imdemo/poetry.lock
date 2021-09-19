@@ -22,8 +22,8 @@ version = "0.2.0"
 description = "IMGUI integration for arcade"
 category = "main"
 optional = false
-python-versions = "^3.9"
-develop = false
+python-versions = ">=3.9, <3.10"
+develop = true
 
 [package.dependencies]
 arcade = "^2.6.2"
@@ -247,8 +247,8 @@ python-versions = "*"
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.9"
-content-hash = "ade50d9cf75319b2f32adc2a1d6258709e05cf75b0bd970e091c88a97beed7df"
+python-versions = ">=3.9, <3.10"
+content-hash = "97ac48e872662f38bf182bca478db8e4dadf9355f6ace608d8659ea993990654"
 
 [metadata.files]
 arcade = [
