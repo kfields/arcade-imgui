@@ -9,6 +9,7 @@ python = ">=3.9, <3.10"
 arcade-imgui = {path = ".."}
 rx = "^3.2.0"
 scipy = "^1.7.1"
+numpy = "^1.21.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

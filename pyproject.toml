@@ -25,8 +25,8 @@ documentation="https://github.com/kfields/arcade-imgui"
 keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
-python = "^3.9"
-arcade = "^2.5.7"
+python = ">=3.9, <3.10"
+arcade = "^2.6.2"
 imgui = "^1.3.0"
 
 [tool.poetry.dev-dependencies]

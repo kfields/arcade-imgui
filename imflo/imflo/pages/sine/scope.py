@@ -19,7 +19,6 @@ class ScopeNode(Node):
         self.add_pin(self.input)
 
     def process(self, value):
-        print(value)
         self.values.append(value)
         if len(self.values) > 100:
             self.values.popleft()
