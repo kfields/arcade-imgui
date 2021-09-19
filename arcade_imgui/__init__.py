@@ -174,7 +174,8 @@ class PygletMixin:
         # determinant of whether we use the fixed or programmable, so do some
         # minor introspection here to check.
         if hasattr(window, 'get_viewport_size'):
-            viewport_size = window.get_viewport_size()
+            viewport = window.get_viewport()
+            viewport_size = viewport[1] - viewport[0], viewport[3] - viewport[2]
             self.io.display_fb_scale = compute_fb_scale(window_size, viewport_size)
         elif hasattr(window, 'get_pixel_ratio'):
             self.io.display_fb_scale = (window.get_pixel_ratio(),
@@ -279,7 +280,8 @@ class ArcadeRenderer(PygletMixin, ArcadeGLRenderer):
     def __init__(self, window, attach_callbacks=True):
         super().__init__(window)
         window_size = window.get_size()
-        viewport_size = window.get_viewport_size()
+        viewport = window.get_viewport()
+        viewport_size = viewport[1] - viewport[0], viewport[3] - viewport[2]
 
         self.io.display_size = window_size
         self.io.display_fb_scale = compute_fb_scale(window_size, viewport_size)
