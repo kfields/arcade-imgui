@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arcade-imgui"
-version = "0.2.0"
+version = "0.3.0"
 description = "IMGUI integration for arcade"
 authors = ["Kurtis Fields <kurtisfields@gmail.com>"]
 license = "MIT"
@@ -25,9 +25,9 @@ documentation="https://github.com/kfields/arcade-imgui"
 keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
-python = ">=3.9, <3.10"
-arcade = "^2.6.2"
-imgui = "^1.3.0"
+python = ">=3.8, <3.12"
+arcade = "^2.6.16"
+imgui = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
