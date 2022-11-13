@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "arcade-imgui"
-version = "0.3.0"
-description = "IMGUI integration for arcade"
+version = "0.4.0"
+description = "IMGUI integration for Python Arcade"
 authors = ["Kurtis Fields <kurtisfields@gmail.com>"]
 license = "MIT"
 
