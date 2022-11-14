@@ -10,20 +10,29 @@ Get [Poetry](https://python-poetry.org/)
 
 ## Clone
 
-Clone the repository and change directory
+```bash
+git clone https://github.com/kfields/arcade-imgui.git
+cd arcade-imgui
+poetry shell
+poetry install
+```
 
-       git clone https://github.com/kfields/arcade-imgui.git
-       cd arcade-imgui
-       poetry shell
+## Run an example
+```bash
+cd examples
+python basic.py
+```
 
 ## Run the Demo
-
-        cd imdemo
-        poetry install
-        python imdemo
+```bash
+cd imdemo
+poetry install
+python imdemo
+```
 
 ## Run the ImFlo Demo
-
-        cd imflo
-        poetry install
-        python imflo
+```bash
+cd imflo
+poetry install
+python imflo
+```
