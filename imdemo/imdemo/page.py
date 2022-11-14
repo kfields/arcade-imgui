@@ -35,6 +35,9 @@ class Page(arcade.View):
         
         imgui.end_frame()
 
+    def on_update(self, delta_time: float):
+        return self.update(delta_time)
+
     def draw_navbar(self):
         imgui.set_next_window_position(16, 32, imgui.ONCE)
         imgui.set_next_window_size(256, 732, imgui.ONCE)
@@ -78,6 +81,9 @@ class Page(arcade.View):
             imgui.end_main_menu_bar()
 
     def draw(self):
+        pass
+
+    def update(self, delta_time):
         pass
 
     def rel(self, x, y):

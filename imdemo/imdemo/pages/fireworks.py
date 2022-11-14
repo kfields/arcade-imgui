@@ -1,7 +1,6 @@
 import arcade
 from arcade import Point, Vector
 from arcade.utils import _Vec2  # bring in "private" class
-import os
 import random
 import pyglet
 
@@ -323,16 +322,6 @@ class FireworksPage(Page):
         to_del = [e for e in emitters_to_update if e.can_reap()]
         for e in to_del:
             self.emitters.remove(e)
-
-    '''
-    def on_draw(self):
-        arcade.start_render()
-        for e in self.emitters:
-            e.draw()
-        arcade.draw_lrtb_rectangle_filled(0, SCREEN_WIDTH, 25, 0, arcade.color.DARK_GREEN)
-        mid = SCREEN_WIDTH / 2
-        arcade.draw_lrtb_rectangle_filled(mid - 2, mid + 2, SPINNER_HEIGHT, 10, arcade.color.DARK_BROWN)
-    '''
 
     def draw(self):
         for e in self.emitters:

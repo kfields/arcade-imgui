@@ -39,6 +39,9 @@ class Page(arcade.View):
         self.dragged = None
         return dragged
 
+    def on_update(self, delta_time):
+        return self.update(delta_time)
+
     def update(self, delta_time):
         for node in self.nodes:
             node.update(delta_time)
