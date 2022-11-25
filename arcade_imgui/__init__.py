@@ -93,13 +93,13 @@ class ArcadeGLRenderer(BaseOpenGLRenderer):
 
                 # Set scissor box
                 x, y, z, w = command.clip_rect
-                gl.glScissor(int(x), int(fb_height - w), int(z - x), int(w - y))
+                self._ctx.scissor = int(x), int(fb_height - w), int(z - x), int(w - y)
 
                 self._vao.render(self._program, mode=self._ctx.TRIANGLES, vertices=command.elem_count, first=idx_pos)
                 idx_pos += command.elem_count
 
         # Just reset scissor back to default/viewport
-        gl.glScissor(*self._ctx.viewport)
+        self._ctx.scissor = None
 
     def refresh_font_texture(self):
         width, height, pixels = self.io.fonts.get_tex_data_as_rgba32()
