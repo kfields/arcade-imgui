@@ -1,6 +1,6 @@
 [[package]]
 name = "arcade"
-version = "2.7.1.dev5"
+version = "2.7.1.dev6"
 description = "Arcade Game Development Library"
 category = "main"
 optional = false
@@ -9,7 +9,7 @@ python-versions = ">=3.8"
 [package.dependencies]
 pillow = ">=9.3.0,<9.4.0"
 pyglet = "2.0.0"
-pymunk = ">=6.2.1,<6.3.0"
+pymunk = ">=6.4.0,<6.5.0"
 pytiled-parser = ">=2.2.0,<2.3.0"
 
 [package.extras]
@@ -143,7 +143,7 @@ python-versions = "*"
 
 [[package]]
 name = "pymunk"
-version = "6.2.1"
+version = "6.4.0"
 description = "Pymunk is a easy-to-use pythonic 2d physics library"
 category = "main"
 optional = false
@@ -153,7 +153,7 @@ python-versions = ">=3.6"
 cffi = ">=1.15.0"
 
 [package.extras]
-dev = ["pyglet", "pygame", "sphinx", "aafigure", "wheel", "matplotlib"]
+dev = ["pyglet (<2.0.0)", "pygame", "sphinx", "aafigure", "wheel", "matplotlib"]
 
 [[package]]
 name = "pyparsing"
@@ -225,7 +225,7 @@ python-versions = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8, <3.12"
-content-hash = "d2bfa77181419a82971e428af0959b065e8ca38791cfba7c6ccf0ea93d2dc303"
+content-hash = "a7dd4926d93b801b4daee1bb8856a44c415a42489f97a41c1bebe122d4b40818"
 
 [metadata.files]
 arcade = []
@@ -295,51 +295,7 @@ pycparser = [
     {file = "pycparser-2.21.tar.gz", hash = "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"},
 ]
 pyglet = []
-pymunk = [
-    {file = "pymunk-6.2.1-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:21c683995c7c9763070ef501cb90817e0158f1aacc95fe316338e02754f3a4bf"},
-    {file = "pymunk-6.2.1-cp310-cp310-macosx_11_0_arm64.whl", hash = "sha256:ec7dbfdd12d076dd1219751aa1b48bb4a319e7fd36f017a3745211a8fd269f2a"},
-    {file = "pymunk-6.2.1-cp310-cp310-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:fc21e0ffac12c86acb9eca61093fd5f51d3fb473dc079c36f39d2527648560f8"},
-    {file = "pymunk-6.2.1-cp310-cp310-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:73e80f0141709434c1adc3fbb8cb7dc9684dc3ad09985a1ae3e81ab5a3706b8f"},
-    {file = "pymunk-6.2.1-cp310-cp310-musllinux_1_1_i686.whl", hash = "sha256:1fcf646dd9e0ecf1224a01026d0beefff4be381bde563aaf567ca7bfbe84d568"},
-    {file = "pymunk-6.2.1-cp310-cp310-musllinux_1_1_x86_64.whl", hash = "sha256:75e179f594a62d3adb900239a351160e4b61683543dd9901fd2c9d09a65e4de1"},
-    {file = "pymunk-6.2.1-cp310-cp310-win32.whl", hash = "sha256:0f21b16d508b0ad1bacb557b1f3954fb6e4c613408ba4d289b5cedfd6bb4e321"},
-    {file = "pymunk-6.2.1-cp310-cp310-win_amd64.whl", hash = "sha256:81ffa3087cb94ed3596166642695787950d9eb43b9b2e70f915c9eb6f74b2a2d"},
-    {file = "pymunk-6.2.1-cp36-cp36m-macosx_10_9_x86_64.whl", hash = "sha256:fad6d3dc2bb36ff2be430fb012478231cf7b9dd8a70f918d4f145cea25285d6d"},
-    {file = "pymunk-6.2.1-cp36-cp36m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:810bc1321c4b74e94574e713cd4f9f6c1742e9bd2430536515e6441090c26a20"},
-    {file = "pymunk-6.2.1-cp36-cp36m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:a706b594287d8dad6206547683fd83dacf0a1f1ce6722867c28030e90e5b502a"},
-    {file = "pymunk-6.2.1-cp36-cp36m-musllinux_1_1_i686.whl", hash = "sha256:0c807fef9534865ea321c4f8fbb9d04e71dfa3e5b5f44a52c9c4fa4d4e9b49d3"},
-    {file = "pymunk-6.2.1-cp36-cp36m-musllinux_1_1_x86_64.whl", hash = "sha256:e6764612950df1880f180b1e3773368a851b7bb7c1e8fc8ee7f18631e4d8f0ea"},
-    {file = "pymunk-6.2.1-cp36-cp36m-win32.whl", hash = "sha256:273991699791af1fc187147f99a694ca67a7dfceef862084abecc375dd2e1082"},
-    {file = "pymunk-6.2.1-cp36-cp36m-win_amd64.whl", hash = "sha256:f1e6c4a329252decce15a4671486fd82694244a3a8d06ab7edfb411d4a20a04e"},
-    {file = "pymunk-6.2.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:e505063fbd1ce8b1459ed71777773425bb59bf536ef7fc9e4bdb62ecd0b194f7"},
-    {file = "pymunk-6.2.1-cp37-cp37m-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:b0b983ca00549905351a91251aa67f903e2d718f228d1ea50e35c30dcd5a3f19"},
-    {file = "pymunk-6.2.1-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:02adec146811918e6e2c69157d67a8e71a23d355f3448f2d585ee5198423ebbf"},
-    {file = "pymunk-6.2.1-cp37-cp37m-musllinux_1_1_i686.whl", hash = "sha256:75b6f8574b067be83c26b127f42b6cc457c7af75970c7d201ff4cfecd4c0f0c8"},
-    {file = "pymunk-6.2.1-cp37-cp37m-musllinux_1_1_x86_64.whl", hash = "sha256:8c77aa16c75028fccf25937775705673276a959f92fdc1451c69d10290504c6f"},
-    {file = "pymunk-6.2.1-cp37-cp37m-win32.whl", hash = "sha256:e1d2cd7f5bad886dba565f779452d8c053e1e540d6bd8864281e93b6b5158ca6"},
-    {file = "pymunk-6.2.1-cp37-cp37m-win_amd64.whl", hash = "sha256:d94a8cd325d2100280e27744e8088aa2db1feacc33e3241786653a03a2b68168"},
-    {file = "pymunk-6.2.1-cp38-cp38-macosx_10_9_x86_64.whl", hash = "sha256:22910cfc972f46f1581c16ac882b17abbab69e5d3bab176ee7eb1670e79c61e4"},
-    {file = "pymunk-6.2.1-cp38-cp38-macosx_11_0_arm64.whl", hash = "sha256:6603dd6075b26ecb4f8e0163b467ab0e0dff956f40768230829b352f571293d3"},
-    {file = "pymunk-6.2.1-cp38-cp38-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:76de49fe5597796f65a6c94c6b3842195fc61ee960f6b7625203fb3eb4a3e0fe"},
-    {file = "pymunk-6.2.1-cp38-cp38-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:18392fd4c9aee9c135395707e2c55e39e1db133037b2f1e4df25f39fbc38e92d"},
-    {file = "pymunk-6.2.1-cp38-cp38-musllinux_1_1_i686.whl", hash = "sha256:b56d81629f4e352c29064b0f6aa0d4a4750da4632f00b0d539504971105c4323"},
-    {file = "pymunk-6.2.1-cp38-cp38-musllinux_1_1_x86_64.whl", hash = "sha256:23946f1677daaaae41ddf4a69d31441a24eedd5fa94aae01d0fc16fe4a6ce811"},
-    {file = "pymunk-6.2.1-cp38-cp38-win32.whl", hash = "sha256:77be3ece10f164dd4cd0d03a9dd5e172f505c38830f307ff3fca2dfef271f5a4"},
-    {file = "pymunk-6.2.1-cp38-cp38-win_amd64.whl", hash = "sha256:de54ba2b76dcf180beac80edf0ba7ff295e282778d5e7c3f9f45f2633d6214dc"},
-    {file = "pymunk-6.2.1-cp39-cp39-macosx_10_9_x86_64.whl", hash = "sha256:1a8e85166e7e543e47367e7062ac65298ec16d0e0f4f68b48a85c5da9488af9d"},
-    {file = "pymunk-6.2.1-cp39-cp39-macosx_11_0_arm64.whl", hash = "sha256:384dd611b4c362a74c4c97b23dc03e8588850d850581915785babb0c66ff0fbd"},
-    {file = "pymunk-6.2.1-cp39-cp39-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:83270e5ff80f24f22081c6ae0333e084f9c711382b8a08b3b856ff55db5ca0f2"},
-    {file = "pymunk-6.2.1-cp39-cp39-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:e6eff022a70e096298f23322b3f3176e2d663614147c90fe7160a74fc055f33c"},
-    {file = "pymunk-6.2.1-cp39-cp39-musllinux_1_1_i686.whl", hash = "sha256:596e59683ea9107f52ee44d3b846b7092d6ea402d701afec08b8bc429907c6ab"},
-    {file = "pymunk-6.2.1-cp39-cp39-musllinux_1_1_x86_64.whl", hash = "sha256:35b5ea71f72209a86004a03d4fbe1fdd37dd4eeba274ff2119b76e363402cc15"},
-    {file = "pymunk-6.2.1-cp39-cp39-win32.whl", hash = "sha256:da71bcee179c54c68fbac290e40ba6024b005613c11bfea9fe6c43199dcf7b6d"},
-    {file = "pymunk-6.2.1-cp39-cp39-win_amd64.whl", hash = "sha256:0303eae52578038e1692b746b4cfe625e284445340363645f1c04bd2b5e1b6fc"},
-    {file = "pymunk-6.2.1-pp37-pypy37_pp73-macosx_10_9_x86_64.whl", hash = "sha256:7dc1d068450b5b1dab5e0a3bd7d6a756c6f73f3b05a66e3c8f3342929b481950"},
-    {file = "pymunk-6.2.1-pp37-pypy37_pp73-manylinux_2_5_i686.manylinux1_i686.manylinux_2_12_i686.manylinux2010_i686.whl", hash = "sha256:e1e5d1a71623ee310ba11e23f6fa4bdb1fe5258e0709e7decdc4a080b3b8b741"},
-    {file = "pymunk-6.2.1-pp37-pypy37_pp73-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_12_x86_64.manylinux2010_x86_64.whl", hash = "sha256:fc217b0171fe87b64dd8e6d33b9f577db632c287439dad3030a15db65c141924"},
-    {file = "pymunk-6.2.1-pp37-pypy37_pp73-win_amd64.whl", hash = "sha256:4153571e7daa7cdfd27ad86ab9e7b74cf6b708d163622880dbce369c7d6fabd4"},
-    {file = "pymunk-6.2.1.zip", hash = "sha256:18ae0f83ec2dc20892b98c84127ce9149ab40fa3c3120097377e1506884b27b8"},
-]
+pymunk = []
 pyparsing = [
     {file = "pyparsing-3.0.9-py3-none-any.whl", hash = "sha256:5026bae9a10eeaefb61dab2f09052b9f4307d44aee4eda64b309723d8d206bbc"},
     {file = "pyparsing-3.0.9.tar.gz", hash = "sha256:2b020ecf7d21b687f219b71ecad3631f644a47f01403fa1d1036b0c6416d70fb"},

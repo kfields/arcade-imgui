@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "arcade-imgui"
-version = "0.4.0"
+version = "0.5"
 description = "IMGUI integration for Python Arcade"
 authors = ["Kurtis Fields <kurtisfields@gmail.com>"]
 license = "MIT"
@@ -26,7 +26,7 @@ keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <3.12"
-arcade = "^2.7.1.dev5"
+arcade = {version = ">=2.6, <2.8", allow-prereleases = true}
 imgui = "^1.4.1"
 
 [tool.poetry.dev-dependencies]
