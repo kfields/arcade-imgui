@@ -1,8 +1,6 @@
 import arcade
-from arcade import Point, Vector
-from arcade.utils import _Vec2  # bring in "private" class
-import os
-import random
+from arcade.types import Point, Vector, PathOrTexture
+from arcade.particles import LifetimeParticle, FadeParticle, Emitter, EmitBurst
 
 def clamp(a, low, high):
     if a > high:
@@ -12,12 +10,12 @@ def clamp(a, low, high):
     else:
         return a
 
-class AnimatedAlphaParticle(arcade.LifetimeParticle):
+class AnimatedAlphaParticle(LifetimeParticle):
     """A custom particle that animates between three different alpha levels"""
 
     def __init__(
             self,
-            filename_or_texture: arcade.FilenameOrTexture,
+            filename_or_texture: PathOrTexture,
             change_xy: Vector,
             start_alpha: int = 0,
             duration1: float = 1.0,

@@ -7,6 +7,8 @@ from math import sin
 import numpy as np
 
 import arcade
+from arcade.particles import LifetimeParticle, FadeParticle, Emitter, EmitBurst, EmitterIntervalWithTime, EmitMaintainCount
+
 import imgui
 
 from imflo.node import Node
@@ -51,7 +53,7 @@ class SparkNode(Node):
     def create_emitter(self):
         ww, wh = arcade.get_window().get_size()
         spark_texture = random.choice(SPARK_TEXTURES)
-        def firework_spark_mutator(particle: arcade.FadeParticle):
+        def firework_spark_mutator(particle: FadeParticle):
             """mutation_callback shared by all fireworks sparks"""
             # gravity
             particle.change_y += -0.03
@@ -59,12 +61,12 @@ class SparkNode(Node):
             particle.change_x += self.change
             particle.change_y += self.change
 
-        self.emitter = arcade.Emitter(
+        self.emitter = Emitter(
             center_xy=(ww/2, wh/2),
-            emit_controller=arcade.EmitBurst(random.randint(30, 40)),
-            particle_factory=lambda emitter: arcade.FadeParticle(
+            emit_controller=EmitBurst(random.randint(30, 40)),
+            particle_factory=lambda emitter: FadeParticle(
                 filename_or_texture=spark_texture,
-                change_xy=arcade.rand_in_circle((0.0, 0.0), 9.0),
+                change_xy=arcade.math.rand_in_circle((0.0, 0.0), 9.0),
                 lifetime=random.uniform(0.5, 1.2),
                 mutation_callback=firework_spark_mutator
             )

@@ -1,12 +1,13 @@
-import arcade
-from arcade import Point, Vector
-from arcade.utils import _Vec2  # bring in "private" class
-import os
 import random
-import pyglet
+
+from pyglet.math import Vec2
 
 import imgui
 import imgui.core
+
+import arcade
+from arcade.types import Point, Vector, PathOrTexture
+from arcade.particles import LifetimeParticle, FadeParticle, Emitter, EmitBurst, EmitMaintainCount
 
 from imdemo.page import Page
 from imdemo.particle import AnimatedAlphaParticle
@@ -29,19 +30,20 @@ class CloudPage(Page):
         arcade.set_background_color(arcade.color.BLACK)
 
     def create_emitter(self):
-        self.emitter = arcade.Emitter(
+        self.emitter = Emitter(
             center_xy=(500, 500),
             change_xy=(0.15, 0),
-            emit_controller=arcade.EmitMaintainCount(60),
+            emit_controller=EmitMaintainCount(60),
             particle_factory=lambda emitter: AnimatedAlphaParticle(
                 filename_or_texture=random.choice(CLOUD_TEXTURES),
-                change_xy=(_Vec2(arcade.rand_in_circle((0.0, 0.0), 0.04)) + _Vec2(0.1, 0)).as_tuple(),
+                #change_xy=(Vec2(arcade.math.rand_in_circle((0.0, 0.0), 0.04)) + Vec2(0.1, 0)).as_tuple(),
+                change_xy=Vec2(*arcade.math.rand_in_circle((0.0, 0.0), 0.04)) + Vec2(0.1, 0),
                 start_alpha=0,
                 duration1=random.uniform(5.0, 10.0),
                 mid_alpha=255,
                 duration2=random.uniform(5.0, 10.0),
                 end_alpha=0,
-                center_xy=arcade.rand_in_circle((0.0, 0.0), 50)
+                center_xy=arcade.math.rand_in_circle((0.0, 0.0), 50)
             )
         )
 

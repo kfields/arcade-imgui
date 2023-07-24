@@ -1,9 +1,7 @@
-import arcade
-from arcade import Point, Vector
-from arcade.utils import _Vec2  # bring in "private" class
-import os
 import random
-import pyglet
+
+import arcade
+from arcade.particles import LifetimeParticle, FadeParticle, Emitter, EmitBurst
 
 import imgui
 import imgui.core
@@ -33,7 +31,7 @@ SPARK_PAIRS = [
     [SPARK_TEXTURES[7], SPARK_TEXTURES[2]],
 ]
 
-def firework_spark_mutator(particle: arcade.FadeParticle):
+def firework_spark_mutator(particle: FadeParticle):
     """mutation_callback shared by all fireworks sparks"""
     # gravity
     particle.change_y += -0.03
@@ -50,13 +48,13 @@ class SparksPage(Page):
 
     def create_emitter(self):
         spark_texture = random.choice(SPARK_TEXTURES)
-        self.emitter = arcade.Emitter(
+        self.emitter = Emitter(
             #center_xy=prev_emitter.get_pos(),
             center_xy=(500, 500),
-            emit_controller=arcade.EmitBurst(random.randint(30, 40)),
-            particle_factory=lambda emitter: arcade.FadeParticle(
+            emit_controller=EmitBurst(random.randint(30, 40)),
+            particle_factory=lambda emitter: FadeParticle(
                 filename_or_texture=spark_texture,
-                change_xy=arcade.rand_in_circle((0.0, 0.0), 9.0),
+                change_xy=arcade.math.rand_in_circle((0.0, 0.0), 9.0),
                 lifetime=random.uniform(0.5, 1.2),
                 mutation_callback=firework_spark_mutator
             )

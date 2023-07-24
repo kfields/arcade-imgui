@@ -27,7 +27,7 @@ keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
 python = ">=3.8, <3.12"
-arcade = {version = ">=2.6, <2.8", allow-prereleases = true}
+arcade = {version = "==3.0.0.dev24", allow-prereleases = true}
 imgui = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
