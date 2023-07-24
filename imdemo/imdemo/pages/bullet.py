@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -23,6 +21,7 @@ class BulletText(Page):
         imgui.bullet_text("Bullet 3")
         imgui.end()
 
+
 def install(app):
     app.add_page(Bullet, "bullet", "Bullets")
-    app.add_page(BulletText,  "bullettext", "Bullets with Text")
+    app.add_page(BulletText, "bullettext", "Bullets with Text")

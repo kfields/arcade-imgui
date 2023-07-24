@@ -1,14 +1,12 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
 
 class ColorEdit3(Page):
     def reset(self):
-        self.color_1 = 1., .0, .5
-        self.color_2 = 0., .8, .3
+        self.color_1 = 1.0, 0.0, 0.5
+        self.color_2 = 0.0, 0.8, 0.3
 
     def draw(self):
         imgui.begin("Example: color edit without alpha")
@@ -21,9 +19,10 @@ class ColorEdit3(Page):
 
         imgui.end()
 
+
 class ColorEdit4(Page):
     def reset(self):
-        self.color = 1., .0, .5, 1.
+        self.color = 1.0, 0.0, 0.5, 1.0
 
     def draw(self):
         imgui.begin("Example: color edit with alpha")
@@ -32,9 +31,12 @@ class ColorEdit4(Page):
         #       in currently processed frame and second element is current value
         #       of color and alpha
         _, self.color = imgui.color_edit4("Alpha", *self.color)
-        _, self.color = imgui.color_edit4("No alpha", *self.color, imgui.COLOR_EDIT_NO_ALPHA)
+        _, self.color = imgui.color_edit4(
+            "No alpha", *self.color, imgui.COLOR_EDIT_NO_ALPHA
+        )
 
         imgui.end()
+
 
 def install(app):
     app.add_page(ColorEdit3, "coloredit3", "Color Edit 3")

@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -24,6 +22,7 @@ class Group(Page):
         imgui.end_group()
 
         imgui.end()
+
 
 def install(app):
     app.add_page(Group, "group", "Group")

@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -17,6 +15,7 @@ class Combo(Page):
         )
 
         imgui.end()
+
 
 def install(app):
     app.add_page(Combo, "combo", "Combo")

@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 

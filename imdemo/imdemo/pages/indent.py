@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -20,6 +18,6 @@ class Indent(Page):
 
         imgui.end()
 
+
 def install(app):
     app.add_page(Indent, "indent", "Indent")
-

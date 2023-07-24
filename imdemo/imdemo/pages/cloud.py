@@ -1,13 +1,11 @@
 import random
 
+import imgui
+
 from pyglet.math import Vec2
 
-import imgui
-import imgui.core
-
 import arcade
-from arcade.types import Point, Vector, PathOrTexture
-from arcade.particles import LifetimeParticle, FadeParticle, Emitter, EmitBurst, EmitMaintainCount
+from arcade.particles import Emitter, EmitMaintainCount
 
 from imdemo.page import Page
 from imdemo.particle import AnimatedAlphaParticle

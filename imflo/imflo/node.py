@@ -1,4 +1,3 @@
-import arcade
 import imgui
 
 class Node:

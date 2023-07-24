@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -20,6 +18,7 @@ class SeparatorPage(Page):
         imgui.bullet_text("Bullet A")
 
         imgui.end()
+
 
 def install(app):
     app.add_page(SeparatorPage, "separator", "Separator")

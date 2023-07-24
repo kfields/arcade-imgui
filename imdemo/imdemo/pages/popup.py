@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -24,6 +22,7 @@ class Popup(Page):
 
         imgui.end()
 
+
 class PopupContextView(Page):
     def draw(self):
         imgui.begin("Example: popup context view")
@@ -33,6 +32,7 @@ class PopupContextView(Page):
             imgui.end_popup()
         imgui.end()
 
+
 class PopupContextWindow(Page):
     def draw(self):
         imgui.begin("Example: popup context window")
@@ -40,6 +40,7 @@ class PopupContextWindow(Page):
             imgui.selectable("Clear")
             imgui.end_popup()
         imgui.end()
+
 
 class PopupModal(Page):
     def draw(self):
@@ -60,9 +61,9 @@ class PopupModal(Page):
 
         imgui.end()
 
+
 def install(app):
     app.add_page(Popup, "popup", "Popup")
     app.add_page(PopupContextView, "popupcontextview", "Popup Context View")
     app.add_page(PopupContextWindow, "popupcontextwindow", "Popup Context Window")
     app.add_page(PopupModal, "popupmodal", "Popup Modal")
-

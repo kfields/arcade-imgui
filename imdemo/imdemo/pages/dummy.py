@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -17,6 +15,7 @@ class Dummy(Page):
         imgui.bullet_text("Text after dummy")
 
         imgui.end()
+
 
 def install(app):
     app.add_page(Dummy, "dummy", "Dummy")

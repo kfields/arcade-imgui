@@ -1,6 +1,4 @@
-import arcade
 import imgui
-import imgui.core
 
 from imdemo.page import Page
 
@@ -19,9 +17,12 @@ class Tooltip(Page):
             texture_width = fonts.texture_width
             texture_height = fonts.texture_height
 
-            imgui.image(texture_id, texture_width, texture_height, border_color=(1, 0, 0, 1))
+            imgui.image(
+                texture_id, texture_width, texture_height, border_color=(1, 0, 0, 1)
+            )
             imgui.end_tooltip()
         imgui.end()
+
 
 def install(app):
     app.add_page(Tooltip, "tooltip", "Tooltip")
