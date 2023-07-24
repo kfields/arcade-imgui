@@ -31,8 +31,8 @@ class ColorEdit4(Page):
         # note: first element of return two-tuple notifies if the color was changed
         #       in currently processed frame and second element is current value
         #       of color and alpha
-        _, self.color = imgui.color_edit4("Alpha", *self.color, show_alpha=True)
-        _, self.color = imgui.color_edit4("No alpha", *self.color, show_alpha=False)
+        _, self.color = imgui.color_edit4("Alpha", *self.color)
+        _, self.color = imgui.color_edit4("No alpha", *self.color, imgui.COLOR_EDIT_NO_ALPHA)
 
         imgui.end()
 

@@ -18,7 +18,7 @@ class FloatSliderPage(Page):
             "vertical slider float",
             width, height, self.value,
             min_value=0, max_value=100,
-            format="%0.3f", power = 1.0
+            format="%0.3f"
         )
         imgui.text("Changed: %s, Values: %s" % (changed, self.value))
         imgui.end()
