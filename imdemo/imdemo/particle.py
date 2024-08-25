@@ -1,5 +1,6 @@
+from pyglet.math import Vec2
 import arcade
-from arcade.types import Point, Vector, PathOrTexture
+from arcade.types import Point, PathOrTexture
 from arcade.particles import LifetimeParticle
 
 def clamp(a, low, high):
@@ -16,7 +17,7 @@ class AnimatedAlphaParticle(LifetimeParticle):
     def __init__(
             self,
             filename_or_texture: PathOrTexture,
-            change_xy: Vector,
+            change_xy: Vec2,
             start_alpha: int = 0,
             duration1: float = 1.0,
             mid_alpha: int = 255,
@@ -36,8 +37,8 @@ class AnimatedAlphaParticle(LifetimeParticle):
         self.out_duration = duration2
         self.end_alpha = end_alpha
 
-    def update(self):
-        super().update()
+    def update(self, delta_time: float):
+        super().update(delta_time)
         if self.lifetime_elapsed <= self.in_duration:
             u = self.lifetime_elapsed / self.in_duration
             self.alpha = clamp(arcade.math.lerp(self.start_alpha, self.mid_alpha, u), 0, 255)

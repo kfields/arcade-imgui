@@ -4,7 +4,7 @@ import pyglet
 from pyglet.math import Vec2
 
 import arcade
-from arcade.types import Point, Vector, PathOrTexture
+from arcade.types import Point, PathOrTexture, LBWH
 from arcade.particles import (
     LifetimeParticle,
     FadeParticle,
@@ -130,7 +130,7 @@ class AnimatedAlphaParticle(LifetimeParticle):
     def __init__(
         self,
         filename_or_texture: PathOrTexture,
-        change_xy: Vector,
+        change_xy: Vec2,
         start_alpha: int = 0,
         duration1: float = 1.0,
         mid_alpha: int = 255,
@@ -159,8 +159,8 @@ class AnimatedAlphaParticle(LifetimeParticle):
         self.out_duration = duration2
         self.end_alpha = end_alpha
 
-    def update(self):
-        super().update()
+    def update(self, delta_time: float):
+        super().update(delta_time)
         if self.lifetime_elapsed <= self.in_duration:
             u = self.lifetime_elapsed / self.in_duration
             self.alpha = clamp(
@@ -210,7 +210,7 @@ class FireworksPage(Page):
                 duration2=random.uniform(2.0, 6.0),
                 end_alpha=0,
                 center_xy=arcade.math.rand_in_rect(
-                    (0.0, 0.0), SCREEN_WIDTH, SCREEN_HEIGHT
+                    LBWH(0.0, 0.0, SCREEN_WIDTH, SCREEN_HEIGHT)
                 ),
             ),
         )
@@ -357,12 +357,12 @@ class FireworksPage(Page):
     def draw(self):
         for e in self.emitters:
             e.draw()
-        arcade.draw_lrtb_rectangle_filled(
-            0, SCREEN_WIDTH, 25, 0, arcade.color.DARK_GREEN
+        arcade.draw_lrbt_rectangle_filled(
+            0, SCREEN_WIDTH, 0, 25, arcade.color.DARK_GREEN
         )
         mid = SCREEN_WIDTH / 2
-        arcade.draw_lrtb_rectangle_filled(
-            mid - 2, mid + 2, SPINNER_HEIGHT, 10, arcade.color.DARK_BROWN
+        arcade.draw_lrbt_rectangle_filled(
+            mid - 2, mid + 2, 10, SPINNER_HEIGHT, arcade.color.DARK_BROWN
         )
 
     def on_key_press(self, key, modifiers):

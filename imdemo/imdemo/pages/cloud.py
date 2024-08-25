@@ -45,10 +45,10 @@ class CloudPage(Page):
             )
         )
 
-    def update(self, delta_time):
+    def update(self, delta_time: float):
         if self.emitter.center_x > SCREEN_WIDTH:
             self.emitter.center_x = 0
-        self.emitter.update()
+        self.emitter.update(delta_time)
 
     def draw(self):
         imgui.set_next_window_position(self.window.width - 288, 32, imgui.ONCE)

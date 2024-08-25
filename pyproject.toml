@@ -26,8 +26,8 @@ documentation="https://github.com/kfields/arcade-imgui"
 keywords = ["arcade", "game", "gui"]
 
 [tool.poetry.dependencies]
-python = ">=3.8, <3.12"
-arcade = {version = "==3.0.0.dev24", allow-prereleases = true}
+python = ">=3.9, <3.12"
+arcade = {version = "==3.0.0.dev32", allow-prereleases = true}
 imgui = "^2.0.0"
 
 [tool.poetry.dev-dependencies]

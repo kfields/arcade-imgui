@@ -47,7 +47,7 @@ class Page(arcade.View):
             node.update(delta_time)
 
     def on_draw(self):
-        arcade.start_render()
+        self.clear()
 
         imgui.new_frame()
 

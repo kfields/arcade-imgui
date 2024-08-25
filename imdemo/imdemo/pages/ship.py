@@ -9,12 +9,14 @@ SPRITE_SCALING = 0.5
 class ShipPage(Page):
     def __init__(self, window, name, title):
         super().__init__(window, name, title)
+        self.sprite_list = arcade.SpriteList()
         self.sprite = arcade.Sprite(
             ":resources:images/space_shooter/playerShip1_orange.png",
             SPRITE_SCALING,
             center_x=512,
             center_y=256,
         )
+        self.sprite_list.append(self.sprite)
         image = self.sprite.texture.image
         self.texture = window.ctx.texture(
             image.size, components=3, data=image.convert("RGB").tobytes()
@@ -67,7 +69,7 @@ class ShipPage(Page):
 
         imgui.end()
 
-        self.sprite.draw()
+        self.sprite_list.draw()
 
 
 def install(app):
